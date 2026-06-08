@@ -43,7 +43,7 @@
 ```bash
 # 克隆仓库
 git clone https://github.com/sengo0723/NJUPT-408Review-Agent.git
-cd 408-review
+cd NJUPT-408Review-Agent
 
 # 安装依赖
 npm install
