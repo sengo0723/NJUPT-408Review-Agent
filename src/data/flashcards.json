@@ -1,0 +1,4529 @@
+[
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "算法复杂度分析",
+    "front": "时间复杂度和空间复杂度的定义？常见复杂度排序？",
+    "back": "时间复杂度T(n)=O(f(n))衡量算法执行时间增长量级。常见递增：O(1)<O(logn)<O(n)<O(nlogn)<O(n²)<O(n³)<O(2ⁿ)<O(n!)。空间复杂度衡量额外辅助空间消耗。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "顺序表插入删除",
+    "front": "顺序表插入/删除的时间复杂度和平均移动元素数？",
+    "back": "插入：最好O(1)尾部，最坏O(n)头部，平均移n/2个元素。在第i位插入移n-i+1个。删除同理。插入合法性：1≤i≤n+1。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "顺序与链式比较",
+    "front": "顺序存储和链式存储的优缺点？",
+    "back": "顺序：随机访问O(1)，存储密度=1，插入删除O(n)需移元素。链式：插入删除O(1)(已知前驱)，动态分配，不支持随机访问O(n)，密度<1。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "单链表头插尾插",
+    "front": "单链表头插法和尾插法的区别？",
+    "back": "头插：新节点插入头部，逆序输出(栈)。尾插：插入尾部，顺序输出。头插O(1)仅改head；尾插需遍历O(n)或维护尾指针O(1)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "双链表",
+    "front": "双向链表相比单链表的优势？删除已知节点的复杂度？",
+    "back": "优势：双向遍历；删除已知节点O(1)(不需找前驱)；前驱可达。代价：多一个prior指针域。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "循环链表",
+    "front": "循环单链表和双链表的判空条件？",
+    "back": "循环单链表带空头结点：L->next==L。循环双链表：L->next==L且L->prior==L。可从任意节点遍历全链表。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "静态链表",
+    "front": "静态链表的特点和典型应用？",
+    "back": "用数组下标模拟指针，next=-1为空。不需动态分配，适用于无指针语言。典型应用：OS的FAT文件分配表。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "顺序表扩容",
+    "front": "顺序表动态扩容的时间和空间分析？",
+    "back": "双倍增容法：每次扩容×2。n次push_back总时间O(n)（均摊O(1)）。扩容n次时累计移动次数1+2+4+...+≈O(n)。若倍增因子为k，均摊仍O(1)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "有序表合并",
+    "front": "两个递增有序单链表合并为一个递减有序单链表的算法思路？",
+    "back": "头插法：同时遍历两链表，比较当前节点值，将较小者用头插法插入新链表。因为是头插法，原递增序列变为递减。时间O(m+n)，空间O(1)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "栈的基本概念",
+    "front": "栈的特点？上溢和下溢的含义？",
+    "back": "栈是LIFO线性表。操作：push、pop、top。上溢：栈满时入栈。下溢：栈空时出栈。顺序栈需预设大小。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "栈应用-括号匹配",
+    "front": "栈在括号匹配中的算法步骤？时间/空间复杂度？",
+    "back": "左括号入栈，右括号出栈匹配。最后栈空则全匹配。时间O(n)，空间O(n)。注意判断栈空（防右括号多时下溢）。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "栈应用-表达式求值",
+    "front": "中缀转后缀表达式的算法步骤？",
+    "back": "操作数直接输出。运算符：优先级>栈顶则入栈，否则栈顶出栈输出。左括号入栈，遇右括号出栈直到左括号。结束弹出全部。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "栈应用-递归转非递归",
+    "front": "递归为什么可用栈消除？一般转换方法？",
+    "back": "递归本质是系统栈保存现场。转非递归：1.尾递归→循环。2.一般递归→自定义栈模拟系统栈保存参数和返回地址。后序遍历最复杂需标记位。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "卡特兰数-出栈序列",
+    "front": "n个不同元素依次入栈的合法出栈序列数？公式和约束？",
+    "back": "卡特兰数Cₙ=1/(n+1)C(2n,n)。n=3有5种，n=4有14种。约束：任意时刻出栈数≤入栈数。对应2n位二进制串，前缀0数≥1数。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "出栈序列合法性判断",
+    "front": "给定入栈顺序1,2,...,n和出栈序列，如何判断是否合法？",
+    "back": "模拟法：依次处理出栈序列元素，若栈顶不是当前出栈元素则继续入栈直到匹配或全部入栈。若能完整出栈序列则合法。时间O(n)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "共享栈",
+    "front": "两栈共享空间的实现原理？判空和判满条件？",
+    "back": "两栈栈底在数组两端，栈顶向中间生长。top1=-1空，top2=n空。满：top1+1==top2。适合两栈空间需求此消彼长的场景。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "队列基本概念",
+    "front": "队列特点？双端队列的四种操作？",
+    "back": "FIFO线性表。双端队列：头入、头出、尾入、尾出。输入受限：一端只能出。输出受限：一端只能入。栈和普通队列为其特例。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "循环队列公式",
+    "front": "循环队列的队空/队满/元素个数公式？",
+    "back": "队空：front==rear。队满：(rear+1)%MaxSize==front（牺牲一单元）。个数：(rear-front+MaxSize)%MaxSize。也可用tag标记区分空满。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "队列应用场景",
+    "front": "队列在计算机中的典型应用？",
+    "back": "1.打印任务队列 2.CPU就绪队列(RR) 3.BFS图遍历 4.二叉树层序遍历 5.消息队列(生产者-消费者) 6.磁盘I/O请求队列。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "链栈与链队列",
+    "front": "链栈和链队列分别在链表哪端操作？为什么？",
+    "back": "链栈：表头操作O(1)。链队列：入队尾插O(1)，出队头删O(1)，需头尾指针。若反：尾删O(n)找前驱。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "串的存储",
+    "front": "串的顺序、堆分配、块链存储各自特点？",
+    "back": "顺序：定长数组，可能截断。堆分配：动态malloc，长度可变。块链：链表每节点多字符，存储密度=字符数/节点大小，密度高操作复杂。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "BF与KMP比较",
+    "front": "BF和KMP主串指针区别？最坏比较次数？",
+    "back": "BF：主串i和j都回溯(i=i-j+2)，最坏O(mn)。KMP：i不回溯仅j回溯到next[j]，最坏约2n+m次比较，O(m+n)。实际场景中BF在自然语言串匹配中效率不差。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "KMP-next数组",
+    "front": "KMP中next[j]的含义？求法？时间复杂度？",
+    "back": "next[j]=前j个字符的最长相等前后缀长度+1(模式串从1编号)。双指针法求：i=1,j=0,匹配同增，失配j=next[j]。时间O(m)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "KMP-nextval优化",
+    "front": "KMP的nextval数组如何优化？何时用？",
+    "back": "若p[j]==p[next[j]]，则nextval[j]=nextval[next[j]]（因为p[j]失配时p[next[j]]也必然失配），否则nextval[j]=next[j]。减少冗余比较。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "KMP匹配过程",
+    "front": "KMP匹配时主串指针如何处理？总复杂度？",
+    "back": "主串指针i不回溯！仅j回溯到next[j]。总O(m+n)，优于朴素O(mn)。这是KMP核心优势。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "二维数组地址计算",
+    "front": "按行优先和列优先的二维数组元素地址公式？",
+    "back": "行优先：LOC=a₀+(i×n+j)×L，n列数。列优先：LOC=a₀+(j×m+i)×L，m行数。n维推广：LOC=A₀+(Σ维度累积乘积)×L。C行优先，Fortran列优先。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "对称矩阵压缩",
+    "front": "对称矩阵和下三角矩阵的压缩存储公式？",
+    "back": "对称矩阵存下三角(含对角线)：n(n+1)/2元素。aᵢⱼ(i≥j)→B[(i-1)i/2+(j-1)]。上三角转储下三角：交换行列。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "三对角矩阵",
+    "front": "三对角矩阵的压缩存储和地址公式？",
+    "back": "仅三条对角线有非零元。存于B[3n-2]。aᵢⱼ→B[2i+j-3]（|i-j|≤1时）。已知B[k]求(i,j)：i=⌊(k+1)/3⌋+1, j=k-2i+3。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "稀疏矩阵存储",
+    "front": "稀疏矩阵的三元组表和十字链表存储方式？",
+    "back": "三元组：(行,列,值)数组，便于转置（快速转置法O(n+t)）。十字链表：行指针数组+列指针数组，节点含(行,列,值,下,右)，适合频繁增删。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "广义表",
+    "front": "广义表长度和深度的定义？表头与表尾的区别？",
+    "back": "长度：顶层元素个数。深度：括号嵌套最大层数。表头=首元素(原子或子表)。表尾=去首后剩余元素组成的表(必为表)。()长度0深度1。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "二叉树定义",
+    "front": "二叉树与度为2的树的区别？满二叉树和完全二叉树的定义？",
+    "back": "二叉树：最多2子树，有左右之分。度为2的树：至少3节点，无序。满二叉树：深度k有2ᵏ-1节点。完全二叉树：与满二叉树编号对应，末层可不满但靠左。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "二叉树5个性质",
+    "front": "二叉树的5个重要性质？",
+    "back": "1.第i层最多2^(i-1)节点 2.k层最多2ᵏ-1节点 3.n₀=n₂+1 4.完全二叉树深度⌊log₂n⌋+1 5.n节点二叉链表有n+1空链域。推导：n=n₀+n₁+n₂，B=n-1=n₁+2n₂→n₀=n₂+1。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "完全二叉树编号",
+    "front": "完全二叉树按层编号(从1起)，父节点与子节点编号关系？",
+    "back": "节点i：左孩子2i，右孩子2i+1，父⌊i/2⌋。偶数→左孩子，奇数→右孩子。叶子范围⌊n/2⌋+1~n。深度⌊log₂i⌋+1。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "二叉树空链域",
+    "front": "n节点二叉链表多少个空链域？三叉链表多了什么？",
+    "back": "二叉链表：2n指针域，n-1边→空链域=n+1。三叉链表加parent指针→总3n指针域。n+1空链域可造线索二叉树实现非递归遍历。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "先序遍历非递归",
+    "front": "二叉树先序遍历非递归算法步骤？",
+    "back": "1.根入栈 2.出栈访问 3.右子入栈(如有) 4.左子入栈(如有) 5.重复2-4到栈空。先入栈右子再左子，这样左子先出栈(先左后右)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "中序遍历非递归",
+    "front": "二叉树中序遍历非递归算法步骤？",
+    "back": "1.根入栈 2.沿左链到底入栈 3.出栈访问 4.转向右子树(重复2-3)。栈空且当前NULL结束。O(n)时间O(h)空间。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "后序遍历非递归",
+    "front": "二叉树后序遍历为何最复杂？双栈法？",
+    "back": "访问根前需确保左右子已遍历需标记。双栈法：栈1先序入栈(改根左右为根右左得逆后序)→栈2收集，最后倒序出栈。或单栈+prev指针：prev记录上次访问节点。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "重建二叉树",
+    "front": "为何仅前序+后序不能唯一确定二叉树？哪种可以？",
+    "back": "前序(根左右)和后序(左右根)都不能区分左右子分界。仅中序提供左子在前右子在后的信息。中序+前序✅ 中序+后序✅ 前序+后序❌。BST仅用前序可唯一确定。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "线索二叉树",
+    "front": "中序线索二叉树如何找前驱和后继？",
+    "back": "后继：rtag=1右指针直指；rtag=0有右子→后继=右子树最左下。前驱：ltag=1直指；ltag=0有左子→前驱=左子树最右下。遍历每个节点O(1)找后继。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "树转二叉树",
+    "front": "树/森林转换为二叉树的规则？",
+    "back": "树→二叉树：左孩子右兄弟。兄弟连线，除首子外断父连线。森林→二叉树：每树先转二叉树，然后根节点互连(兄弟)。转换后若无右子树则为最后一棵树。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "孩子兄弟表示法",
+    "front": "树的孩子兄弟(左孩子右兄弟)表示法如何找第i个孩子？",
+    "back": "每个节点两个指针：firstChild(左)→nextSibling(右)。找第i个孩子：p=firstChild;循环i-1次p=p->nextSibling。遍历所有孩子沿nextSibling走到底。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "树遍历与二叉树遍历的关系",
+    "front": "树的先根/后根遍历对应其转换后二叉树的哪种遍历？",
+    "back": "树的先根遍历=转换后二叉树的先序遍历。树的后根遍历=转换后二叉树的中序遍历。森林的先序遍历=二叉树的先序，森林的中序=二叉树的中序。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "哈夫曼树构造",
+    "front": "哈夫曼树的构造过程和特点？",
+    "back": "每次选权值最小两个合并。n叶子→2n-1节点，无度1节点。WPL=Σ权值×路径长度最小。哈夫曼编码是前缀编码(左0右1)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "WPL计算",
+    "front": "如何不构造树就计算WPL？",
+    "back": "优先队列：每次取出最小两权值合并，WPL累加合并后权值，放回队列。最终累加和即为WPL。时间O(nlogn)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "并查集结构与优化",
+    "front": "并查集的数据结构？Find/Union优化？",
+    "back": "森林双亲表示(数组)，parent=-1为根。优化1：按秩合并(小树→大树)。优化2：路径压缩(Find时路径节点直连根)。两优化均摊约O(α(n))≈常数。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "BST查找性能",
+    "front": "二叉排序树查找性能和删除操作？",
+    "back": "查找O(h)，最好O(logn)平衡，最坏O(n)单支。删除：叶直接删；单子→子代替；双子→用前驱/后继替换。BST不保证平衡。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "BST的插入",
+    "front": "BST插入新关键字的算法过程和复杂度？",
+    "back": "从根开始比较，小于走左子大于走右子，直到找到NULL位置插入为新叶子。时间O(h)。插入按照严格的小根大规则。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "AVL四种旋转",
+    "front": "AVL树的四种旋转和平衡因子？",
+    "back": "LL：右单旋。RR：左单旋。LR：先左后右双旋。RL：先右后左双旋。平衡因子=左高-右高，|BF|≤1。插入后从插入点向上找首个|BF|=2节点旋转。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "AVL删除调整",
+    "front": "AVL树删除后如何调整？和插入调整有何不同？",
+    "back": "删除后可能一路向上都需调整(插入最多转一次)。删除节点→检查父节点平衡→调整旋转→可能父节点也失衡需继续向上。最坏O(logn)次旋转。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "AVL最大最小节点数",
+    "front": "高度为h的AVL树最少/最多有多少节点？",
+    "back": "最多2^(h+1)-1(满)。最少nₕ=nₕ₋₁+nₕ₋₂+1(近似fibonacci)，n₀=1,n₁=2。以斐波那契因子增长，nₕ≈φ^(h+1)/√5-1，高度约1.44log₂(n+1)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "红黑树五条性质",
+    "front": "红黑树的五条性质？黑高定义？",
+    "back": "1.节点红或黑 2.根黑 3.NIL(叶子)黑 4.红节点父子必黑 5.任路径黑节点数相同。黑高bh=从该节点(不含自身)到叶的黑色节点数。最长路径≤2倍最短路径。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "红黑树vsAVL",
+    "front": "红黑树和AVL树各自适用场景？",
+    "back": "AVL更严格(|BF|≤1)，查找更快但插入删除旋转多。红黑树最多2倍高度差，插入删除最多2次旋转，适用于写密集场景(STL map/set)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "B树定义",
+    "front": "m阶B树的定义条件？",
+    "back": "ceil(m/2)≤非根节点关键字数≤m-1。非叶节点子树数=关键字数+1。根节点至少2子(非叶时)。所有叶节点同层。高度h：n+1≥2×ceil(m/2)^(h-1)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "B树插入删除",
+    "front": "B树插入和删除后的调整？",
+    "back": "插入：查找到叶后插。满则分裂(中关键字上升父节点)。删除：非叶→前驱/后继替→转叶删。叶删后少则借兄弟(>ceil(m/2)-1时)或合并兄弟+父关键字。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "B树vsB+树",
+    "front": "B树和B+树的区别？B+树优势？",
+    "back": "B树：关键字在各层，查找可在内部节点结束。B+树：关键字仅叶节点，叶形成有序链表。B+优势：范围查询O(logn+m)，每节点关键字多I/O更优，适合数据库索引。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "散列函数构造",
+    "front": "散列函数构造方法有哪些？",
+    "back": "1.除留余数法(H(key)=key%p,p≤m素数) 2.直接定址 3.数字分析 4.平方取中 5.折叠。除留余数最常用，除数取不大于m的最大素数减少冲突。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "开放定址法对比",
+    "front": "线性探测、二次探测、双重散列的对比？",
+    "back": "线性：H+i，主聚集严重。二次：H+i²，减主聚集有二次聚集。双重：H₁+i×H₂，H₂与m互质，无聚集最佳。缺点：删除需做lazy deletion标记。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "散列表ASL",
+    "front": "散列表ASL成功和ASL失败的计算？装填因子α？",
+    "back": "α=n/m。拉链：ASL成功≈1+α/2，失败≈α。线性探测：成功≈(1+1/(1-α))/2，失败≈(1+1/(1-α)²)/2。α越小性能越好。拉链允许α>1。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "拉链法特点",
+    "front": "拉链法处理冲突的优缺点？",
+    "back": "优点：空间灵活(α可>1)，删除方便，无聚集问题，ASL低。缺点：指针额外空间开销，链节点分散不连续影响缓存。综合性能优于开放定址法。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "散列表查找失败ASL计算",
+    "front": "线性探测散列表中如何计算查找失败的ASL？",
+    "back": "对每个同义词地址(0~p-1)，从该地址出发线性探测直到遇到空位置停止，统计探测次数。所有初始地址探测次数的平均值即为ASL失败。注意：超过m的探测以m计。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "排序算法分类",
+    "front": "内部排序算法按策略分哪几类？",
+    "back": "1.插入：直接插入、折半插入、希尔 2.交换：冒泡、快排 3.选择：简单选择、堆排序 4.归并：二路归并 5.基数：LSD/MSD。还有计数、桶排序非比较型。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "直接插入排序",
+    "front": "直接插入的最好最坏复杂度？适用场景？",
+    "back": "最好O(n)已有序，最坏O(n²)逆序。稳定。空间O(1)。适合小规模(n<50)和基本有序序列。常用作快排递归小规模收尾。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "折半插入排序",
+    "front": "折半插入排序的改进和局限？",
+    "back": "查找位置用折半O(logi)，但移元素仍O(n)，总O(n²)，仅减少比较次数。稳定。适用顺序存储。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "希尔排序",
+    "front": "希尔排序思想和增量序列影响？",
+    "back": "间隔d子序列分别直接插入排序，d递减到1。Shell增量O(n²)；Hibbard(2ᵏ-1)O(n^1.5)；Sedgewick O(n^(4/3))。不稳定。使序列逐渐趋于有序。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "冒泡排序",
+    "front": "冒泡的最好/最坏复杂度？如何优化提前结束？",
+    "back": "最好O(n)一趟无交换，最坏O(n²)逆序。稳定。优化：设置flag，某趟无交换则已有序提前结束。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "快排复杂度",
+    "front": "快速排序平均/最坏时空复杂度？优化方法？",
+    "back": "平均O(nlogn)，最坏O(n²)(有序时)。空间O(logn)递归栈。不稳定。优化：三数取中选pivot；小规模转插入排序；尾递归优化减少递归深度。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "快排Partition",
+    "front": "快速排序Partition两种实现方法？",
+    "back": "1.挖坑法：pivot=a[low]，右扫找小放到左，左扫找大放到右，交替进行。2.双指针法：i=low-1,j从low到high-1扫描，a[j]≤pivot时++i并swap。均O(n)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "快排最坏情况",
+    "front": "快排在什么情况下出现最坏O(n²)？如何避免？",
+    "back": "输入已有序或逆序且选首元素为pivot时每次划分极不均匀→O(n²)。避免：随机选pivot、三数取中法。但即使如此仍有可能输入恰好使每次pivot为极端值。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "简单选择排序",
+    "front": "简单选择的过程、复杂度、不稳定性？",
+    "back": "每趟从i..n选最小与第i个交换，n-1趟。O(n²)与初始状态无关。不稳定例：[5,5,2]→[2,5,5]两5相对顺序变。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "堆排序",
+    "front": "堆排序的时空复杂度？建堆为何O(n)？",
+    "back": "建堆O(n)，排序O(nlogn)，总体O(nlogn)，空间O(1)。不稳定。升序大根堆。建堆从⌊n/2⌋向下调整，第k层节点数×下滤k次，求和为O(n)非O(nlogn)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "堆的调整",
+    "front": "大根堆上滤和下滤代码逻辑？",
+    "back": "上滤(插入)：元素放末尾与父比较，大于父则交换向上。下滤(建堆/删顶)：根与最大孩子比较，小于则交换向下。建堆从⌊n/2⌋向下调整。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "归并排序",
+    "front": "归并排序的时空复杂度？为什么稳定？",
+    "back": "时O(nlogn)，空O(n)辅助数组，稳定。两路归并log₂n趟每趟O(n)。稳定性源于合并时相等元素保持左段优先。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "基数排序LSD/MSD",
+    "front": "基数排序LSD和MSD方法？时间复杂度？",
+    "back": "LSD从个位开始排序，靠稳定性保证正确。d趟分配收集O(d(n+r))，r为基数。MSD从高位开始递归分组。LSD更常用。适用关键字可分多位的场景。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "排序稳定性口诀",
+    "front": "哪些排序稳定？哪些不稳定？口诀？",
+    "back": "稳定：直插、冒泡、归并、基数。不稳定：希尔、快排、简单选择、堆排序。口诀\"快选堆希\"不稳定。稳定性：相等关键字排序后相对位置不变。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "外部排序过程",
+    "front": "外部排序的基本过程和优化？",
+    "back": "核心是归并。1.生成初始归并段(置换选择算法) 2.k路归并(败者树O(logk)选最小)。归并趟数=⌈logₖr⌉。增大k减少I/O趟数，但缓冲区变多。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "败者树",
+    "front": "败者树与胜者树的区别？在k路归并中作用？",
+    "back": "败者树内部记录败者(较大者)，胜者继续向上。重构仅需与上层败者比较O(logk)仅1次比较/层。胜者树重构需2次比较/层。败者树效率更高。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "最佳归并树",
+    "front": "最佳归并树是什么？如何构造？",
+    "back": "类似哈夫曼树，以初始归并段长度为权构造k叉最优归并树。若k-1不整除n初-1需补充0权虚段。每次选k个最小归并。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "置换选择排序",
+    "front": "置换选择排序如何生成初始归并段？",
+    "back": "用最小堆(大小=m)，从输入读取m个元素建堆。每次输出堆顶，读入新元素：若大于等于刚输出则入堆，否则暂存。堆空则一段结束。产生平均长度约2m的归并段。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "排序算法选择",
+    "front": "不同场景如何选择排序算法？",
+    "back": "n小(<50)→插入/选择。基本有序→直接插/冒泡。n大稳定→归并。n大不稳定→快排。n大大键值范围小→基数。内存有限→外部排序。TopK→堆排序或快排partition。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "图的基本概念",
+    "front": "无向图/有向图度数总和与边数的关系？完全图边数？",
+    "back": "无向：Σ度=2|E|。有向：Σ入=Σ出=|E|。完全图：无向n(n-1)/2，有向n(n-1)。连通图最少n-1边。强连通最少n边。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "图的存储比较",
+    "front": "邻接矩阵和邻接表的时空对比？",
+    "back": "邻接矩阵：O(V²)空间，判边O(1)，适稠密图。邻接表：O(V+E)空间，扫描O(度)，适稀疏图。无向图邻接表每条边出现两次。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "BFS",
+    "front": "BFS算法思想？时间/空间复杂度？",
+    "back": "借队列：从起点逐层访问，求无权图最短路径。邻接表O(V+E)，矩阵O(V²)。空间O(V)(所有节点可能同层入队)。可用于：最短路径、连通分量、二分图判定。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "DFS",
+    "front": "DFS算法思想？时间/空间复杂度？",
+    "back": "借栈(递归/显式栈)：回溯搜索，判环/拓扑排序/连通分量。邻接表O(V+E)，矩阵O(V²)。递归空间O(h)。遍历生成树含树边和回边。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "DFS边分类",
+    "front": "有向图DFS四类边及判定？",
+    "back": "树边(T)：发现新节点。回边(B)：指向祖先→有环。前向边(F)：祖先指向已完成子孙。横边(C)：无祖先后代关系。判定用时间戳discover/finish。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "拓扑排序",
+    "front": "拓扑排序算法和判环方法？",
+    "back": "必要条件：DAG(有向无环图)。算法：1.选入度为0顶点输出 2.删该顶点和边 3.重复。O(V+E)。也可DFS完成时间逆序。若输出数<V则有环。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "关键路径",
+    "front": "AOE网中ve/vl如何计算？关键路径定义？",
+    "back": "ve(k)：源点到k的最长路径(正向取Max)。vl(k)：不推迟工期的前提下最迟时间(反向取Min，vl(汇)=ve(汇))。活动(i,j)：e=ve(i)，l=vl(j)-w(i,j)。l-e=0为关键活动。关键路径可能不止一条。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "Dijkstra算法",
+    "front": "Dijkstra算法时间和适用条件？",
+    "back": "朴素O(V²)，堆优化O((V+E)logV)。仅适用于非负权边(负权破坏贪心)。单源最短路径。贪心策略：每次选dist最小未确定顶点。若权值含负则需Bellman-Ford。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "Bellman-Ford",
+    "front": "Bellman-Ford能处理什么？复杂度？",
+    "back": "能处理负权边(Dijkstra不能)，可检测负权环。V-1轮松弛所有边，O(VE)。第V轮仍松弛→存在负权环。原因是无负权环的最长最短路径最多V-1条边。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "Floyd算法",
+    "front": "Floyd算法特点和为什么k必须最外层？",
+    "back": "所有顶点对最短路径。三重循环k,i,j。递推：d[k][i][j]=min(d[k-1][i][j], d[k-1][i][k]+d[k-1][k][j])。O(V³)。可处理负权边但不能负权环。k最外层因为动态规划阶段k表示前k个节点做中转。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "Prim与Kruskal对比",
+    "front": "Prim和Kruskal时间/适用/数据结构？",
+    "back": "Prim：朴素O(V²)，堆优化O((V+E)logV)，适合稠密图。Kruskal：O(ElogE)，适合稀疏图。Prim邻接矩阵+dist数组；Kruskal用并查集判环。都是贪心MST。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "MST唯一性",
+    "front": "什么时候最小生成树唯一？",
+    "back": "所有边权值互不相同时MST唯一。证明：反证，若两不同MST必有等权边。权值相等时MST可能不唯一但总权值必等。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "Dijkstra与Prim的异同",
+    "front": "Dijkstra和Prim算法的相似与区别？",
+    "back": "相似：都维护dist数组、贪心选最小值、O(V²)。区别：Dijk的dist是源点到各点的最短距离(累加)；Prim的dist是各点到MST的最短边权(不累加)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "链表反转",
+    "front": "单链表反转的迭代和递归方法？",
+    "back": "迭代：pre=null,cur=head;循环:next=cur->next,cur->next=pre,pre=cur,cur=next。O(n)时间O(1)空间。递归：后部反转后head->next->next=head,head->next=null。O(n)时间O(n)空间。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "链表环检测",
+    "front": "如何检测单链表有环？找到环入口？",
+    "back": "快慢指针：快2慢1，相遇有环。找入口：相遇后一个从head(速1)一个从相遇点(速1)，再遇点即入口。证明：L=入口前长度，C环长，S相遇点距入口：2(L+S)=L+nC+S→L=nC-S。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "二分查找边界",
+    "front": "二分查找第一个≥target和最后一个≤target的写法？",
+    "back": "第一个≥：mid=l+r>>1;if(a[mid]>=target)r=mid;else l=mid+1。最后一个≤：mid=l+r+1>>1;if(a[mid]<=target)l=mid;else r=mid-1;注意上取整防死循环。返回l/r。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "跳跃表",
+    "front": "跳跃表(Skip List)结构和查找复杂度？",
+    "back": "有序链表多层索引，每层以概率升层。查找从最高层横向比较，无法前进则下降。期望层数O(logn)，查找/插入/删除期望O(logn)。对应平摊概率均衡。Redis有序集合使用。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "强连通分量SCC",
+    "front": "求有向图SCC的Kosaraju和Tarjan算法？",
+    "back": "Kosaraju：2次DFS，1次得完成逆序，2次在反向图上按逆序DFS得SCC。Tarjan：1次DFS+栈，low[v]=min(dfn[v],low[u],dfn[backedge])。dfn=low时出SCC。均O(V+E)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "Master定理",
+    "front": "Master定理三种情况的判定？举例？",
+    "back": "T(n)=aT(n/b)+f(n)。Case1:f(n)=O(n^{logₐb-ε})→Θ(n^{logₐb})。Case2:f(n)=Θ(n^{logₐb})→Θ(n^{logₐb}logn)。Case3:f(n)=Ω(n^{logₐb+ε})且af(n/b)≤cf(n)(c<1)→Θ(f(n))。T(n)=2T(n/2)+n→Case2。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "栈混洗数量",
+    "front": "n个元素经过一个栈可得到多少种排列？",
+    "back": "卡特兰数Cₙ。即合法出栈序列数=Cₙ。不是所有排列都可达！例如入栈序123不能得312。约束：任意前缀中出栈数≤入栈数。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "二叉树的层遍历应用",
+    "front": "二叉树的层序遍历算法和应用？",
+    "back": "队列辅助：根入队，循环出队访问、左右子入队。O(n)时间O(n)空间。应用：1.层次打印 2.求树宽度(BFS) 3.求最小深度 4.判断完全二叉树(遇到NULL后不应再有非NULL)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "完全二叉树的判定",
+    "front": "如何判定一棵二叉树是完全二叉树？",
+    "back": "层序遍历，遇到第一个NULL节点后标记flag=true，之后遇到任何非NULL节点则不是完全二叉树。若遍历结束无问题则是。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "BST判定",
+    "front": "如何判断一棵二叉树是否是BST？",
+    "back": "中序遍历，检查是否严格递增。或递归：传入合法上下界(root->val必须大于下界小于上界)，左右子递归更新界。O(n)时间O(h)空间。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "冯诺依曼结构",
+    "front": "冯诺依曼体系结构的核心思想和五部件？",
+    "back": "核心：存储程序(程序和数据的二进制存入存储器，CPU自动取指执行)。五部件：运算器(ALU)、控制器(CU)、存储器、输入设备、输出设备。瓶颈：CPU-存储器带宽。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "计算机性能指标",
+    "front": "CPU主频、CPI、MIPS、MFLOPS含义和公式？",
+    "back": "CPU时间=指令数×CPI×时钟周期=指令数×CPI/主频。CPI每条指令平均周期数。MIPS=主频(MHz)/CPI衡量定点。MFLOPS=浮点操作/时间×10⁶，更客观。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "进制转换",
+    "front": "二进制、八进制、十六进制的快速转换方法？",
+    "back": "二→八：3位一组。二→十六：4位一组。八→二：每1位转3位。十六→二：每1位转4位。十→二：整数除2取余倒序；小数乘2取整正序。0.1₁₀转二进制无限循环。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "原反补码范围",
+    "front": "8位原码/反码/补码/移码表示范围？",
+    "back": "原码：-127~+127(±0)。反码：-127~+127(±0)。补码：-128~+127(0唯一，多表示一负数)。移码：-128~+127(=补码符号位取反，用于浮点阶码)。n位补码：-2^(n-1)~2^(n-1)-1。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "补码运算特征",
+    "front": "补码三大特征？[A-B]补如何计算？",
+    "back": "1.符号位参与运算 2.0唯一 3.减法转加法：[A-B]补=[A]补+[-B]补。求[-B]补：已知[B]补连符号位取反+1。统一处理加减无需减法器。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "溢出判断三法",
+    "front": "补码运算的三种溢出判断？",
+    "back": "1.双符号位(变形补码)：00正，11负，01正溢，10负溢。2.进位判别：Cn⊕C{n-1}=1溢出(Cn符号位进位，C{n-1}最高数值位进位)。3.操作数符号：正+正=负(正溢)，负+负=正(负溢)。正+负永不会溢出。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "移码特点",
+    "front": "移码特点和浮点数阶码为何用移码？",
+    "back": "移码=真值+2^(n-1)，=补码符号取反。无符号数比较即比较真值，便于浮点对阶(比较阶码)。IEEE754单精度偏移127、双精度1023。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "BCD码",
+    "front": "8421BCD和余3码的区别？BCD运算为何需修正？",
+    "back": "8421BCD：4位二进制1位十进制(0000~1001)，非法1010~1111。余3=8421+0011，自补码(取反得9补)。运算修正：和>9或产生进位则+6修正(跳过6个非法编码)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "IEEE754单双精度",
+    "front": "IEEE754单精度/双精度的格式？真值公式？",
+    "back": "单精度32位：1S+8E(偏移127)+23M(隐藏1)。双精度64位：1S+11E(偏移1023)+52M。规格化数真值=(-1)^S×1.M×2^(E-127/1023)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "IEEE754特殊值",
+    "front": "IEEE754中阶码全0和全1表示什么？",
+    "back": "E全0+M全0=±0。E全0+M非0=非规格化数(隐藏位=0,指数-126)。E全1+M全0=±∞。E全1+M非0=NaN(0/0,∞-∞)。E=1~254是规格化数。单精度最小正规格化数=2^(-126)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "浮点加减五步",
+    "front": "浮点数加减运算五步？为何小阶向大阶？",
+    "back": "1.对阶(小→大，尾数右移，可能丢精度；大→小会丢高位)。2.尾数加减。3.规格化(左规尾数非1左移；右规双符号位不一致右移)。4.舍入。5.溢出判断。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "浮点舍入方式",
+    "front": "浮点四种舍入方式？IEEE754默认？",
+    "back": "1.截断(丢弃) 2.0舍1入(末位) 3.恒置1 4.最近舍入(Round-to-Nearest-Even,IEEE默认，中间值向偶数舍入)。RNE最均衡无系统偏差。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "Booth乘法",
+    "front": "原码乘法和Booth算法的区别？",
+    "back": "原码乘法：符号位单独(异或)，数值部分绝对值乘(加/不加)。Booth补码：符号位参与运算，低位+附加位：10则[-X]补，01则[+X]补，00/11加0。每次算术右移。n次加n次移。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "ALU",
+    "front": "ALU加法器进位方式有哪些？",
+    "back": "串行进位(延迟O(n))；先行进位CLA：Gᵢ=AᵢBᵢ,Pᵢ=Aᵢ⊕Bᵢ,Ci+1=Gi+PiCi可并行；分组并行(组内并行组间串/并)。74181经典4位ALU。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "SRAM_vs_DRAM",
+    "front": "SRAM和DRAM对比？DRAM为何需刷新？",
+    "back": "SRAM：6管触发器，快速(ns)，无刷新，集成度低功耗大，Cache用。DRAM：1管1电容，需刷新(电容漏电)，集成度高容量大，主存用。刷新方式：集中/分散/异步。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "存储器层次",
+    "front": "存储器层次结构原理？时间/空间局部性？",
+    "back": "金字塔：寄存器→Cache→主存→辅存，速度递减容量递增价格递减。原理：时间局部性(刚访问的近期再访)；空间局部性(附近地址可能被访)。上层是下层缓存。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "Cache三映射",
+    "front": "Cache直接/全相联/组相联映射特点？",
+    "back": "直接：固定位置，简单快但冲突多。全相联：任意位置，冲突少但查找慢。组相联：N路一组，折中最常用。主存地址拆tag|index|offset。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "Cache平均访问时间",
+    "front": "Cache平均访问时间公式？",
+    "back": "平均时间=命中率×Tc+(1-命中率)×Tm 或 =HitTime+MissRate×MissPenalty。提高命中率或降低缺失开销可提升性能。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "Cache替换算法",
+    "front": "RAND/FIFO/LRU/LFU对比？LRU硬件实现？",
+    "back": "RAND随机；FIFO先进先出(可能有Belady)；LRU最近最少用(命中率高但硬件复杂)；LFU最不常用。LRU计数器法或栈法，近似LRU用CLOCK/NRU。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "Cache写策略",
+    "front": "写直达与写回区别？写分配与非写分配？",
+    "back": "写直(Write-through)：同时写Cache+主存，简单慢(每次访存)。写回(Write-back)：只写Cache，替换时写回(需脏位Dirty)。写分配：写不命中时调块入Cache再写。通常写回+写分配或写直+非写分配搭配。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "Cache与主存地址映射",
+    "front": "直接映射Cache如何拆分主存地址？3部分含义？",
+    "back": "主存地址=Tag(区号)|Index(行号)|Offset(块内偏移)。主存容量/Cache容量=区数。Tag用于判断是否命中，Index定位Cache行，Offset访问块内字节。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "Cache容量计算",
+    "front": "给定Cache容量、块大小、地址线数，如何计算Tag/Index/Offset位数？",
+    "back": "Offset=log₂(块字节数)。Index=log₂(Cache行数)=log₂(Cache容量/块大小)。Tag=地址总线数-Index-Offset。例：4KB Cache,16B块,1路→Index=log₂(4096/16)=8位。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "多级Cache",
+    "front": "L1/L2/L3 Cache各自特点？",
+    "back": "L1：小(32-64KB)、快(1-2周期)、分指令/数据(哈佛结构)。L2：较大(256KB-2MB)、中等(~10周期)、统一。L3：大(数MB)、较慢(~30周期)、多核共享。分级降低平均延迟。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "TLB",
+    "front": "TLB作用和地址转换流程？",
+    "back": "TLB(快表/旁路缓冲)是页表Cache加速虚实转换。流程：虚地址→查TLB(命中得物理页框)→查Cache物理地址→数据。TLB不命中需访页表(可能在Cache)或触发缺页中断。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "虚拟存储器",
+    "front": "页式/段式/段页式的区别？",
+    "back": "页式：等大页，页表转换，TLB加速，无外碎片。段式：按逻辑分段(各段大小不一)，段表(基址+段长)，有外碎片。段页式：先段再页(段号+页号+页内偏移)，综合优点(逻辑分隔+无碎片)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "页表结构",
+    "front": "多级页表和倒排页表各自用途？",
+    "back": "多级页表：页目录+页表，节省连续内存空间(大地址空间稀疏使用时)。倒排页表：全局一个表，物理帧→虚实映射，按物理页框索引，节省空间但查找慢(Hash加速)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "存储器容量扩展",
+    "front": "如何用芯片扩展字长和字数？",
+    "back": "位扩展(扩字长)：多片并联地址线/片选线共用，数据线拼接。字扩展(扩容量)：多片地址线共用，片选信号区分芯片。综合扩展：先位扩展后字扩展。芯片数=总容量/单片容量。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "指令地址码",
+    "front": "三/二/一/零地址指令特点和访存次数？",
+    "back": "三地址OP D,S1,S2：4次访存。二地址OP D,S：D←D OP S，3次访存。一地址OP A：隐ACC，2次访存。零地址：栈操作，隐含操作数。地址少指令短但可能需更多指令。RISC多三地址。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "寻址方式",
+    "front": "常见7种寻址方式及有效地址计算？",
+    "back": "1.立即：操作数在指令。2.直接：EA=A。3.间接：EA=(A)。4.寄存器直接：EA=R。5.寄存器间接：EA=(R)。6.变址：EA=(IX)+A(数组)。7.基址：EA=(BR)+A(重定位)。8.相对：EA=(PC)+A(转移)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "CISC_vs_RISC",
+    "front": "CISC和RISC核心区别？典型代表？",
+    "back": "CISC(x86)：不等长指令，多周期，多寻址，微程序控制，寄存器少，编译器简。RISC(ARM/MIPS)：定长32位，单周期/Load-Store，硬布线，寄存器多(32)，流水线友好。现代CPU融合：CISC外表+RISC内核。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "指令周期与机器周期",
+    "front": "指令周期/机器周期/时钟周期的区别？",
+    "back": "时钟周期(节拍)：主频倒数T=1/f，最小单位。机器周期(CPU周期)：完成一个基本操作(如访存)的时间。指令周期：收取一条指令的时间=取指+间址+执行+中断周期。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "CPU内部寄存器",
+    "front": "CPU有哪些主要寄存器及作用？",
+    "back": "通用寄存器组(GPR)、PC(程序计数器存下条指令地址)、IR(指令寄存器存当前指令)、MAR/MDR(访存地址/数据寄存器)、PSW(程序状态字含标志位)、SP(栈指针)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "流水线性能指标",
+    "front": "流水线加速比/吞吐率/效率公式？",
+    "back": "加速比S=nk/(k+n-1)，n→∞趋近k。吞吐率TP=n/((k+n-1)Δt)→1/Δt(n→∞)。效率E=n/(k+n-1)→1(n→∞)。实际达不到理论因段不等长/装入排空/冒险/中断。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "数据冒险",
+    "front": "RAW/WAR/WAW含义？哪些可转发解决？",
+    "back": "RAW(写后读)：i写j读→须转发或stall，最常见。WAR(读后写)：i读j写→乱序时出现，寄存器重命名解。WAW(写后写)：两指令写同寄存器→重命名解。RAW可旁路转发bypassing直接传结果。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "控制冒险",
+    "front": "分支冒险的解决方法？",
+    "back": "1.冻结/冲刷流水线 2.静态分支预测(总预不跳/总预跳) 3.动态分支预测(1位/2位预测器，BHT) 4.延迟分支(分支槽填充NOP或有用指令) 5.分支目标缓冲(BTB)。2位预测器精度>90%。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "结构冒险",
+    "front": "什么是结构冒险及其解决方法？",
+    "back": "多条指令竞争同一硬件资源(如单一存储器). 解决方法：1.增加硬件资源(Harvard架构分离指令/数据Cache) 2.流水线停顿(stall)插入一个气泡。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "流水线数据转发",
+    "front": "数据旁路(forwarding)如何工作？",
+    "back": "执行阶段ALU得到结果立即通过旁路路径将结果(无需等写回阶段写寄存器)直接送入下条指令的EX阶段输入端。EX/MEM流水段间寄存器的结果转发到EX阶段。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "总线分类",
+    "front": "系统总线分为哪三类？各自传输内容？",
+    "back": "数据总线(DB)：双向传输数据，宽度决定一次传输量。地址总线(AB)：单向传输地址，宽度决定寻址范围。控制总线(CB)：传输控制/状态信号(读/写/中断等)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "总线仲裁",
+    "front": "总线仲裁的集中式和分布式方式？",
+    "back": "集中式：链式查询(菊花链，简单但不公)；计数器定时查询(灵活)；独立请求方式(快但线多)。分布式：各设备自裁决，依据设备标识号(优先权自决定)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "总线定时",
+    "front": "同步和异步通信的区别？",
+    "back": "同步：统一时钟信号定时，所有设备按固定时序工作，速度快但灵活性差。异步：通过握手信号交互(不互锁/半互锁/全互锁)，灵活可连接速度不同设备，但复杂控制开销大。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "总线带宽计算",
+    "front": "总线带宽如何计算？",
+    "back": "总线带宽=总线宽度×时钟频率/传输周期数。例：64位宽100MHz总线每2周期传一次→带宽=8Bytes×100MHz/2=400MB/s。总线标准：PCI、PCIe、USB。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "I/O编址方式",
+    "front": "统一编址和独立编址区别？",
+    "back": "统一编址(存储器映射I/O)：I/O端口和主存统一编址，用访存指令访I/O(MOV/LOAD/STORE)，节省指令但占用地址空间。独立编址：I/O有独立地址空间，需专用I/O指令(IN/OUT)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "程序查询_vs_中断",
+    "front": "程序查询方式和中断方式的区别？",
+    "back": "程序查询：CPU不断读状态寄存器判断外设是否就绪(轮询)，CPU利用率低实时性差。中断方式：外设就绪时主动发中断请求，CPU响应中断处理，利用率高实时性好。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "DMA方式",
+    "front": "DMA与中断方式的核心区别？DMA三种模式？",
+    "back": "DMA：批量数据由DMA控制传输，CPU仅开始结束参与，适用高速设备。中断：每字节触发CPU处理。DMA三模式：1.停止CPU访存 2.周期挪用(cycle stealing最常用) 3.交替访问。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "中断响应优先级",
+    "front": "中断判优(优先级)的软硬件实现？",
+    "back": "硬件：菊花链(链式优先权)、中断控制器(如8259A，可编程优先级)。软件：查询法(CPU按优先级顺序查询中断源)。硬件判优快；软件判优灵活但慢。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "多重中断与中断屏蔽",
+    "front": "多重中断的条件？中断屏蔽如何实现？",
+    "back": "条件：CPU允许中断(IF=1)、更高级别中断请求。保留断点后可以响应新中断。屏蔽：设置中断屏蔽字(每一位对应一个中断源，1为屏蔽)，动态改变各中断源的响应次序。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "中断隐指令",
+    "front": "中断隐指令完成哪些操作？和普通指令区别？",
+    "back": "中断隐指令(硬件自动)：1.关中断 2.保存断点(PC)和PSW 3.取ISR入口地址(中断向量法)。不是编程指令，是硬件在中断响应时自动执行的操作序列。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "中断服务程序流程",
+    "front": "中断服务程序ISR的完整流程？",
+    "back": "1.保护现场(寄存器压栈) 2.开中断(允多重中断) 3.执行中断处理 4.关中断(恢复现场时不被打断) 5.恢复现场 6.开中断 7.中断返回(IRET指令恢复PC和PSW)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "通道方式",
+    "front": "通道控制方式的原理和类型？",
+    "back": "通道是专门处理I/O的处理器(比DMA更高级)。字节多路通道(低速多设备时分复用)；选择通道(高速设备独占通道)；数组多路通道(折中，多个高速设备时分复用)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "磁盘性能指标",
+    "front": "磁盘平均存取时间和数据传输率公式？",
+    "back": "平均存取时间=平均寻道时间+平均旋转延迟(1/2转)+传输时间(字节数/传输率)。平均寻道通常最大寻道和的1/3。旋转速度rpm：平均延迟=1/2×(60/rpm)秒。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "RAID",
+    "front": "RAID 0/1/5/10的特点？",
+    "back": "RAID0条带化(性能好无冗余)。RAID1镜像(满冗余容量减半)。RAID5块级分布式校验(至少3盘，容许1盘失效，读好写差)。RAID10/01:RAID1+0条带镜像容错性好但成本高。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "单总线数据通路",
+    "front": "单总线结构CPU执行指令涉及哪些基本操作？",
+    "back": "取指：PC→MAR→主存→MDR→IR，PC+1。间址：IR中地址→MAR→主存→MDR。执行：ALU运算操作数→结果写回。每个微操作在一个时钟周期(节拍)完成。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "微程序_vs_硬布线",
+    "front": "微程序控制和硬布线控制的区别？",
+    "back": "微程序：控制信号由控存读取，ROM存微指令，灵活但慢(CISC用)。硬布线(组合逻辑)：门电路直接产生控制信号，快但复杂不灵活(RISC用)。现代CPU两者结合。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "微指令格式",
+    "front": "微指令的编码方式和分类？水平型vs垂直型？",
+    "back": "水平型：每位直接控制一个信号，并行度高，速度快但字长。垂直型：类似机器指令，编码紧凑但并行度低需译码。混合型：字段直接编码(相斥信号同字段)，最常用。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "数据通路时间分析",
+    "front": "单周期和多周期CPU的区别？",
+    "back": "单周期：所有指令在1个(最长)时钟周期完成，CPI=1但周期长(最慢指令)。多周期：指令分多少不等的时钟周期完成，周期短但CPI>1。流水线CPU每个周期可发射1指令(理想CPI→1)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "指令流水线阶段",
+    "front": "经典五段式流水线各阶段做什么？",
+    "back": "IF(取指)：PC→IM；ID(译码)：读寄存器、立即数扩展；EX(执行)：ALU运算或地址计算；MEM(访存)：Load/Store；WB(写回)：结果写寄存器。每段1周期，指令重叠执行。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "流水线阻塞原因",
+    "front": "流水线阻塞(stall)的主要原因有哪些？",
+    "back": "1.数据相关(RAW)需等前指令结果 2.控制相关(分支)取址不确定 3.结构相关(资源竞争) 4.长延迟指令(乘/除/浮点)多周期执行 5.Cache缺失等外部延迟。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "超标量与超流水",
+    "front": "超标量和超流水线的区别？",
+    "back": "超标量：每周期发射多条指令(多套执行单元) ILP>1。超流水线：细分流水段提高主频(段数更多，每周期发射1条但周期更短)。VLIW：长指令字一次发射多个操作。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "Cache一致性",
+    "front": "多核Cache一致性协议基本思想？",
+    "back": "MESI协约：Modified(已改独占)、Exclusive(干净独占)、Shared(共享)、Invalid(无效)。核心保证：多核对同一地址的写入能被其他核看到。写失效(Write-Invalidate)和写更新(Write-Update)策略。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "大小端模式",
+    "front": "大端(Big Endian)和小端(Little Endian)的区别？",
+    "back": "大端：高字节低地址(内存地址0存高位)。小端：低字节低地址(内存地址0存低位)。x86小端；网络字节序大端。C语言union方式检测。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "操作系统定义",
+    "front": "操作系统的作用和基本功能？",
+    "back": "作用：用户与硬件的接口，计算机资源的管理者。功能：处理机管理、存储器管理、设备管理、文件管理、提供用户接口(命令接口/程序接口/GUI)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "OS四个基本特征",
+    "front": "操作系统的四个基本特征？并发和并行区别？",
+    "back": "1.并发(宏观多程序同时运行，微观串行交替) 2.共享(互斥/同时访问) 3.虚拟(物理→逻辑映射) 4.异步(进程走走停停不可预知)。并发≠并行：并行多核同时执行。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "内核态与用户态",
+    "front": "用户态和核心态区别？哪些操作需核心态？如何切换？",
+    "back": "核心态可执行特权指令(关中断/I/O/PSW/基址寄存器/halt)，用户态只能执行普通指令。切换：访管指令(trap/syscall)使用户→核心，PSW模式位标识当前态。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "中断与异常",
+    "front": "中断和异常的区别？各举两例？",
+    "back": "中断(外)：CPU外部信号，异步，与当前指令无关(I/O完成，时钟中断)。异常(内)：指令执行产生的条件，同步(缺页/除0/自陷)。中断可屏蔽(IF)，异常不可屏蔽。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "系统调用",
+    "front": "系统调用的执行过程？和库函数的区别？",
+    "back": "过程：用户程序→传递参数→trap陷入→内核执行syscall→结果返回。库函数可在用户态完成(fopen内部调open syscall)。系统调用一定涉及内核态切换。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "微内核与大内核",
+    "front": "微内核和大内核的各自特点与代表？",
+    "back": "大内核(宏内核)：所有OS服务在内核态(进程管理/内存/文件等)，效率高但耦合重(Linux/Unix)。微内核：最小核心(IPC+调度+低级I/O)，其他服务用户态，灵活但IPC开销大(Minix/QNX)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "进程定义与特征",
+    "front": "进程的定义和三个基本特征？",
+    "back": "进程=程序的一次运行实例(数据段+代码段+PCB)。特征：动态性(生命周期)、并发性、独立性(独立资源分配/地址空间)。程序是静态的，进程是动态的。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "进程五状态",
+    "front": "进程五状态模型和各状态转换条件？",
+    "back": "创建→就绪(资源够缺CPU)；就绪→运行(调度选中)；运行→就绪(时间片完/被抢占)；运行→阻塞(等待事件/I/O)；阻塞→就绪(事件发生)。阻塞不能直接→运行。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "PCB内容",
+    "front": "PCB(进程控制块)包含哪些信息？组织方式？",
+    "back": "PID、处理机状态(寄存器/PC/PSW)、调度信息(优先级/状态)、内存信息(基址/限长/页表指针)、I/O信息(打开文件表)、记账。组织：链表(就绪队列/阻塞队列)、索引表。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "原语",
+    "front": "什么是原语？进程的创建/撤销/阻塞/唤醒原语？",
+    "back": "原语是原子操作，执行中不可中断(关中断实现)。Create：建PCB+资源分配+插入就绪。Exit：还资源+PCB清+通知父。Block：PCB进阻塞队列。Wakeup：PCB从阻塞→就绪。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "进程通信IPC",
+    "front": "三种主要IPC方式及特点？",
+    "back": "1.共享存储：在共享内存区直接读写，需同步信号量，最快。2.消息传递：send/receive(消息缓冲)，内核中转(fifo队列)。3.管道：半双工FIFO(read/write)，无名管道(父子)和有名管道(任意进程)。另：信号(signal)、Socket。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "线程概念",
+    "front": "为何引入线程？线程和进程的区别？",
+    "back": "引入线程目的：减少程序并发开销。进程=资源分配单位，线程=CPU调度单位。线程共享进程资源(地址空间/文件)，各自有栈和PC/寄存器。线程切换开销小。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "ULT_vs_KLT",
+    "front": "用户级线程(ULT)和内核级线程(KLT)的区别？",
+    "back": "ULT：用户空间管理，对内核透明，切换快(不陷内核)，但一阻塞全阻塞，不能多核并行。KLT：内核直接管理线程，可多核并行，切换需陷内核开销大。现代多用KLT或混合模式。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "多线程模型",
+    "front": "三种多线程模型的区别？Linux用的是？",
+    "back": "多对一(多ULT→1KLT，不能并行)。一对一(1ULT→1KLT，可并行但内核线程数限)。多对多(多ULT→少KLT，折中最优)。Linux用1:1模型(pthread_creat直接创建内核线程)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "调度层次",
+    "front": "作业调度的三个层次（长程/中程/短程）？",
+    "back": "长程(作业/高级调度)：从外存后备队列选作业入内存创建进程。中程(中级调度)：挂起/激活进程，平衡内存(调出调进)。短程(CPU/低级调度)：从就绪队列选进程分配CPU，频率最高。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "FCFS_SJF_RR_MLFQ对比",
+    "front": "FCFS/SJF/RR/MLFQ各算法的特点？",
+    "back": "FCFS：简单，护航效应(长作业造成短作业等)，非抢占。SJF/SPF：平均等待最短，需求预知，长作业可能饿死。RR：公平，q大小影响性能(q大≈FCFS,q小开销大)。MLFQ：多队列优先级+时间片递增，综合最优。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "调度器触发时机",
+    "front": "CPU调度(进程切换)在哪些时机发生？",
+    "back": "1.运行→阻塞(I/O请求) 2.运行→就绪(时间片完/中断) 3.阻塞→就绪(I/O完成，可抢占) 4.进程终止。1和4非抢占不可避；2和3可选择抢占或非抢占。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "响应时间vs周转时间",
+    "front": "周转时间和响应时间的区别？",
+    "back": "周转时间=完成时间-到达时间=等待+执行+阻塞时间。带权周转=周转/执行时间。响应时间=首次开始执行时间-到达时间。批处理关注周转，交互系统关注响应。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "实时调度",
+    "front": "实时调度算法的RM和EDF？",
+    "back": "RM(Rate Monotonic)静态优先级：周期越短优先级越高，固定，可调度条件U≤n(2^(1/n)-1)≈0.69。EDF(Earliest Deadline First)动态优先级：截止期越早优先级越高，可调度条件U≤1，比RM灵活但开销大。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "优先级反转",
+    "front": "什么是优先级反转？解决方法？",
+    "back": "高优先级进程等低优先级释放共享资源(中等优先级抢占低优先导致无限等待)。解决：优先级继承(低优先级临时升到等待它的最高优先)或优先级置顶协议。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "临界区",
+    "front": "临界区的定义？进入/退出临界区的四个准则？",
+    "back": "临界区=访问共享资源(临界资源)的代码段。准则：1.有空让进(无进程在时允许请求者进) 2.忙则等待(已有进程在则其他等待) 3.有限等待(等待时间有限) 4.让权等待(不能进时释放CPU)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "Peterson算法",
+    "front": "Peterson软件互斥算法的原理？",
+    "back": "两个进程P0/P1，共享数组flag[2]和变量turn。flag[i]=true声明意愿，turn=j让给对方。循环：while(flag[j]&&turn==j)等待。满足互斥+活锁自由+有限等待。仅双进程。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "TSL指令",
+    "front": "Test-and-Set-Lock指令的原理和原子性？",
+    "back": "TSL是硬件原子指令：读取lock值并设为1(原子操作)。lock=0则获得锁入临界区，lock=1则忙等(spin)。硬件保证原子性(总线锁或Cache一致性)。忙等浪费CPU。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "信号量数据结构",
+    "front": "记录型信号量的数据结构和PV操作伪代码？",
+    "back": "semaphore{int value; process *L;} P:value--;if(value<0)block(); V:value++;if(value<=0)wakeup()。|S.value|=等待队列长度。PV必须成对。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "生产者消费者",
+    "front": "生产者消费者问题需几个信号量？核心代码结构？",
+    "back": "3个：mutex=1(互斥),empty=n(空位),full=0(有货)。生产者：P(empty); P(mutex); 放入; V(mutex); V(full)。消费者：P(full); P(mutex); 取出; V(mutex); V(empty)。关键：P(empty/full)在P(mutex)之前，否则死锁。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "读者写者问题",
+    "front": "读者优先和写者优先策略的区别？可能导致什么？",
+    "back": "读者优先：新读者到即可读(无写者时)，写者等所有读者离开→写者可能饿死。写者优先：新读者需等当前写者先写→读者可能饿死。公平型：FIFO按到达顺序服务。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "哲学家进餐",
+    "front": "哲学家进餐问题的三种解法？",
+    "back": "1.限制最多4人同时拿筷子(信号量count=4) 2.偶数号先左后右，奇数号先右后左(避免对称死锁) 3.同时拿两筷(使用AND型信号量Swait同时等待两个资源)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "管程",
+    "front": "管程(Monitor)的定义和与信号量的比较？",
+    "back": "管程=封装共享数据和操作过程+条件变量，任何时刻最多一个进程使用管程。管程更结构化(面向对象风格)，编译器保证互斥，比信号量更易用但不够灵活。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "死锁必要条件",
+    "front": "死锁的四个必要条件？",
+    "back": "1.互斥(资源独用) 2.占有并等待 3.不可剥夺 4.循环等待。互斥不可破(资源固有属性)。预防破坏后三个之一。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "银行家算法",
+    "front": "银行家算法核心思想和数据结构？",
+    "back": "安全检查：找是否存在安全序列。Need=Max-Alloc。找Need≤Available的进程执行后释放资源，重复直到所有进程可完成。若存在安全序列则状态安全可分配。数据：Alloc/Max/Need/Available矩阵。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "死锁预防",
+    "front": "破坏死锁四个条件的具体方法？",
+    "back": "1.破占有并等：一次性分配全部(利用率低)。2.破不可剥夺：可剥夺资源(保存/恢复现场)。3.破循环等待：资源有序分配(给资源编号，只能递增申请)。最常用第3种(资源排序法)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "死锁检测与解除",
+    "front": "死锁检测方法和解除手段？",
+    "back": "检测：分配图简化法(找不阻塞不孤立的进程逐一释放)，或定期银行家检测。解除：1.撤销进程(按优先级从小到大逐撤) 2.剥夺资源 3.回滚到检查点。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "链接方式",
+    "front": "程序装入的三种方式(绝对/可重定位/动态运行时)？",
+    "back": "绝对装入：编译时知内存地址直接装入。可重定位：装入时基址寄存器+逻辑地址→物理地址。动态运行时：运行时完成地址转换(重定位寄存器+界限寄存器，支持动态移动)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "连续分配",
+    "front": "连续分区分配的四种方式？",
+    "back": "单一连续：单用户任务。固定分区：分区大小固定，有内碎片。动态分区：按需划分大小不等分区，有外碎片。可重定位分区：通过紧凑(compaction)合并碎片。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "动态分区算法",
+    "front": "动态分区首次/最佳/最坏/下次适配算法？",
+    "back": "首次适应：找第一个够大的分区分配，最快O(n)。最佳：找最小的够大的，产生小碎片多。最坏：找最大分区，碎片少但大作业难。下次适应(循环首次)：从上分配区之后找，分布较均。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "碎片问题",
+    "front": "内部碎片和外部碎片的区别？",
+    "back": "内碎片：分配给进程的分区内未用空间(固定分区中产生，如分区大小>进程需要)。外碎片：未被分配但太小不够任何进程使用的空闲块(动态分区中产生)。紧凑解决外碎片。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "分页管理",
+    "front": "分页存储管理的基本概念？页大小选择？",
+    "back": "物理内存分块(页框/物理块)，逻辑地址分页(等大小)。页表记录页号→块号映射。页越小碎片越少但页表越大。通常4KB/Linux透明大页2MB。地址转换：页号查表+页内偏移=物理地址。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "页表项结构",
+    "front": "页表项(PTE)包含哪些字段及作用？",
+    "back": "页框号(物理页号)、有效位(页在内存中)、保护位(R/W/X)、修改位(dirty，被写过则换出时需写回)、访问位(reference，LRU用)、缓存禁用位。多级页表中外层页表的一项映射一个内层页表。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "TLB(快表)",
+    "front": "TLB的作用和TALB缺失处理？",
+    "back": "TLB(Translation Lookaside Buffer)缓存近期使用页表项加速虚实地址转换。TLB缺失：硬件页表漫游(Hardware Page Walk)或软件(OS)处理页表查表→更新TLB。TLB刷新：进程切换时flush(进程地址空间ID ASID可避免全清)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "二级页表",
+    "front": "为什么需要多级页表？二级页表如何节省空间？",
+    "back": "32位4KB页 = 1M个页表项(每项4B需4MB连续内存存储页表)。二级页表：页目录(1024项)+页表(每个1024项)均4KB。只分配实际使用的页表而非全部，节省空间但增加一次访存。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "虚拟内存",
+    "front": "虚拟存储器的原理和三个主要特性？",
+    "back": "仅将要用的页调入内存，不用的暂留在外存(disk swap)。特性：多次性(不需一次全调入)、对换性(可换入换出)、虚拟性(逻辑扩容)。基于程序局部性原理。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "缺页中断",
+    "front": "缺页中断的处理流程？",
+    "back": "检查页表有效位→无效则缺页→OS：1.找空闲物理页(或用置换算法选换出页) 2.磁盘读取页入内存 3.更新页表项(物理框号+有效位=1) 4.重执行引发缺页的指令。缺页是异常(故障型)可恢复后重执行。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "页面置换算法",
+    "front": "OPT/FIFO/LRU/CLOCK的对比？",
+    "back": "OPT：换出最远将来使用的页(理论上优但不可实现)。FIFO：先入先出，有Belady异常(多物理框反而多缺页)。LRU：换最久未用，栈算法(无Belady)，接近OPT但开销高。CLOCK：循环链表+访问位，一种近似LRU，实用。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "Belady异常",
+    "front": "什么是Belady异常？哪些算法有？",
+    "back": "FIFO置换在增加物理块数时反而增加缺页次数，称为Belady异常。LRU和OPT是栈算法无此异常。CLOCK也有。原因：FIFO替换页面和页面使用特征不相关。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "改进CLOCK",
+    "front": "改进CLOCK如何考虑修改位？",
+    "back": "两轮扫描：第1轮找(A=0,M=0)最佳；第2轮找(A=0,M=1)需写回；第3轮后全恢复访问位(类似一轮)。综合考虑访问位A(最近访问)和修改位M(脏位)，优先淘汰干净页(免写回)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "分配策略",
+    "front": "固定分配/可变分配，局部置换/全局置换的区别？",
+    "back": "固定分配局部：每进程固定物理块数，置换仅在自己页面内选。可变分配全局：OS动态调配，全局选页面置换，灵活但进程之间干扰。可变分配局部：根据缺页率动态调整自身分配。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "工作集",
+    "front": "工作集模型的原理？",
+    "back": "进程当前访问的页面集合W(t,Δ)=过去Δ次访问对应的页面集合。缺页率高于阈值则增加物理块，低于阈值则减少。工作集的大小反映了进程的活跃内存需求。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "抖动",
+    "front": "什么是抖动(Thrashing)？成因和解决？",
+    "back": "抖动=进程频繁缺页换页忙于换入换出而CPU利用率急剧下降。成因：运行的进程数过多，总工作集超出物理内存可用量。解决：减少多道程序度、增加物理内存、挂起部分进程(中级调度)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "文件逻辑结构",
+    "front": "有结构文件和无结构文件的区别？",
+    "back": "有结构(记录式)：记录定长/不定长(如数据库行)。无结构(流式)：字节流文件(UNIX/Linux/Windows将一切设备视为流式文件)。现代OS多对流式文件。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "文件物理结构",
+    "front": "三种文件物理结构及特点？",
+    "back": "1.连续分配：磁盘上一段连续区，随机访问快但外碎片/增长难。2.链接分配：块指针链接(隐式/显式FAT)，无碎片但随机访问慢。3.索引分配：索引块存所有块指针，随机访问快但索引块额外开销。UNIX用多级索引。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "混合索引",
+    "front": "UNIX混合索引分配方式？各级能存多少数据？",
+    "back": "10个直接块+1个一级间接块+1个二级/三级间接块。假设块4KB每指针4B=1024指针/块。直接10块=40KB，一级=4MB，二级=4GB，三级=4TB。UNIX小文件快(直接)、大文件可扩展(间接)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "FCB",
+    "front": "文件控制块FCB包含哪些信息？",
+    "back": "文件名、文件类型、物理地址(磁盘块号/索引块指针)、文件大小、创建/修改/访问时间、所有者ID/组ID、访问权限(rwx)、链接计数nlink、文件属性。FCB是文件目录项的核心。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "目录结构",
+    "front": "单级/两级/树形/无环图的目录结构区别？",
+    "back": "单级：所有文件同一目录(全系统唯一名)。两级：用户文件目录+主文件目录MFD。树形：多级目录层次结构(最常用)。无环图：允许文件共享(增加链接计数)，需防循环。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "硬链接vs软链接",
+    "front": "硬链接和符号链接的区别？",
+    "back": "硬链接：不同目录项指向同一inode，links++，删除原文件不影响链接(最后links=0才删)。不可跨文件系统。符号链接(软链接)：独立文件存目标路径，删原文件断链，可跨文件系统。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "空闲盘块管理",
+    "front": "空闲表法/空闲链表/位示图/成组链接的特点？",
+    "back": "位示图：每块1bit(0空闲1占用)，实现简单查找快，空间开销小。成组链接法(UNIX)：每组存下组号+空闲块号列表，组间链接。空闲链表：链式，分配回收快但随机访问慢。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "文件共享",
+    "front": "文件共享的软硬链接方式和符号链接的优劣？",
+    "back": "硬链接共享：不同路径同一inode，高效但必须同文件系统且不支持目录(防环)。符号链接：灵活可跨文件系统，读链接路径形成新访问路径(慢，需额外解析)。Windows的快捷方式≈符号链接。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "磁盘调度算法",
+    "front": "磁盘调度算法FCFS/SSTF/SCAN/CSCAN/Look比较？",
+    "back": "FCFS：按请求顺序，最公平。SSTF：最近服务优先，总寻道短但远离磁道的饥饿。SCAN(电梯)：来回扫描直到边界。C-SCAN：单向扫描回到头不服务。LOOK/C-LOOK：无请求方向不继续。SSTF寻道时间最优。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "文件系统一致性",
+    "front": "文件系统一致性检查什么？",
+    "back": "一致性检查工具(fsck/chkdsk)：1.块一致性(块计数/空闲块与分配块总和) 2.文件一致性(链接计数与目录项匹配) 3.inode与目录一致性。以修复不一致。日志文件系统(ext4/NTFS)通过Journaling减少不一致。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "VFS",
+    "front": "虚拟文件系统(VFS)的作用？支持哪些操作？",
+    "back": "VFS在物理文件系统上提供统一接口(抽象层)，支持不同文件系统共存(ext4/NFS/FAT等)。核心数据结构：superblock、inode、dentry、file。操作：open/read/write/close通过file_operations函数指针。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "I/O控制方式",
+    "front": "I/O控制的四种方式及各自适用场景？",
+    "back": "1.程序直接控制(轮询)：CPU持续读状态寄存器，利用率极低。2.中断驱动：外设就绪发中断，适合低速设备。3.DMA：批量数据直接内存访问，CPU仅初始和结束参与，适用高速设备(磁盘/网卡)。4.通道：专门I/O处理器，高级。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "SPOOLing",
+    "front": "SPOOLing系统的组成部分和工作原理？",
+    "back": "假脱机：输入/输出井(磁盘)+输入/输出进程。输入井预读数据→虚拟设备供多进程同时用(如多用户打印输出全先输到输出井)。将独占设备变虚拟共享设备，提高利用率和吞吐。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "设备独立性",
+    "front": "设备独立性(设备无关性)如何实现？",
+    "back": "逻辑设备名映射物理设备。LUT(逻辑设备表)：逻辑设备名→物理设备(驱动入口)。使用逻辑名编程免于物理设备变化。设备驱动框架(如Linux字符设备/块设备统一接口)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "缓冲区",
+    "front": "单缓冲/双缓冲/循环缓冲的区别？",
+    "back": "单缓冲：1个缓冲区，处理时间C和输入时间T最大(max(C,T)+M,M移数据)。双缓冲：2个交替缓冲，处理=输入时间可重叠(max(T,C))。循环缓冲：多缓冲成环(生产者-消费者模式)，适合突发I/O。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "通道",
+    "front": "字节多路/选择/数组多路通道的区别？",
+    "back": "字节多路：分时控制多设备字节交叉传输，适用慢极多设备(打印机/终端)。选择通道：一次只服务一台，全速传输高速设备(磁盘)。数组多路：时分复用多台高速设备阵列交叉传输(成组数据)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "信号量分类",
+    "front": "整型信号量和记录型信号量的区别？",
+    "back": "整型仅value，P通过while(value<=0)忙等。记录型多了阻塞队列，S.value<0时block()进入队列让权等待而非忙等，V时wakeup()唤醒，更优。PC题通常指记录型信号量。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "同步前驱关系",
+    "front": "如何用信号量描述进程间的前驱关系？",
+    "back": "每个前驱后继关系建一个信号量初0。前驱执行完成后V(sig)，后继执行前P(sig)。如是DAG图：每条边建一个信号量，确保拓扑序正确执行。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "共享内存与内存映射",
+    "front": "共享内存(mmap)与普通共享存储的区别？",
+    "back": "mmap：将文件映射到进程地址空间直接访问(文件与内存关联)，修改自动写回。System V共享内存(shmget/shmat)：独立于文件的纯内存区域，需显式管理同步。mmap简便可用于IPC和文件I/O。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "因特网组成",
+    "front": "因特网的两大组成部分？",
+    "back": "边缘部分：主机(端系统)，供用户直接使用，C/S和P2P模式。核心部分：路由器(分组交换机)，实现数据交换(电路交换/报文交换/分组交换)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "三种交换方式",
+    "front": "电路交换、报文交换、分组交换的区别？",
+    "back": "电路交换：建立连接→通信→释放(独占资源，连续传输，适合实时)。报文交换：存储转发整报文(不需连接，转发延迟大)。分组交换：存储转发分组(灵活，利用率高，统计时分复用)。因特网核心用分组交换。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "计算机网络分类",
+    "front": "按覆盖范围网络分几类？",
+    "back": "PAN(个人区域网)、LAN(局域网如以太网/WiFi)、MAN(城域网)、WAN(广域网如帧中继)。互联网(Internet)=网络的网络，用路由器互连各种网络。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "时延类型",
+    "front": "四种网络时延分别是什么？计算公式？",
+    "back": "总时延=发送(数据长度/速率)+传播(距离/信号速度)+处理(查表)+排队(等待发送)。RTT往返时间=2×传播+中间节点处理。带宽时延积=RTT×带宽=管道容量。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "OSI_vs_TCPIP",
+    "front": "OSI七层和TCP/IP四层模型？对应关系？",
+    "back": "OSI：物理→链路→网络→传输→会话→表示→应用。TCP/IP：网络接口(链路+物理)→网际(IP)→传输(TCP/UDP)→应用(会话+表示+应用)。OSI模型更标准但TCP/IP为实际标准。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "网络协议三要素",
+    "front": "网络协议的三要素是什么？",
+    "back": "语法：数据与控制信息的结构/格式(数据格式/编码等)。语义：发出何种控制信息完成何种动作(请求/确认等)。时序：事件实现顺序的详细说明。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "奈奎斯特定理",
+    "front": "奈奎斯特公式及适用场景？",
+    "back": "理想无噪声信道：最大数据率=2W·log₂V(bps)。W带宽(Hz)，V离散等级数。给定W和V可算理论最大传输率。仅考虑带宽不考虑噪声。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "香农定理",
+    "front": "香农公式及与奈奎斯特的关系？",
+    "back": "有噪声信道：C=W·log₂(1+S/N)(bps)。S/N信噪比，dB值=10log₁₀(S/N)。实际最大速率取奈奎斯特和香农中较小值。香农给出了有噪声信道的绝对上限。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "物理层传输介质",
+    "front": "双绞线/同轴电缆/光纤的特点？",
+    "back": "双绞线：铜线，RJ45接，廉价易部署，有屏蔽STP和非屏蔽UTP(5e/6类)。同轴电缆：单干扰佳，CATV/早期以太。光纤：玻璃丝，带宽最大，抗干扰，单模(远距)和多模(近距离)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "编码方式",
+    "front": "NRZ/曼彻斯特/差分曼彻斯特的区别？",
+    "back": "NRZ：1高0低或不归零，无自同步(需独立时钟)。曼彻斯特：每比特中间跳变，1=上跳(高低)，0=下跳(低高)，含时钟自同步，波特率=2×数据率。差分曼彻斯特：每比特开始处0跳变1不跳，中间必有跳变(自同步)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "数据链路层功能",
+    "front": "数据链路层的三个基本功能？",
+    "back": "1.成帧(组帧)：前后加首部尾部定界帧，字节计数/字符填充/零比特填充。2.差错检测：CRC循环冗余校验/奇偶校验。3.可靠传输(可选)：ARQ确认/重传(无线链路有，以太网无)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "CRC",
+    "front": "CRC循环冗余校验的原理和计算？",
+    "back": "发送端：数据序列÷生成多项式G(x)(模2除法)，余数为冗余码R附在数据后(数据+余数)。接收端：接收序列÷G(x)，余数=0则无错。G(x)选择决定检错能力(CRC-32/CRC-CCITT)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "CSMA_CD",
+    "front": "CSMA/CD协议原理和冲突检测？",
+    "back": "载波监听多路访问/碰撞检测(以太网用)。发前先听(空闲则发)，边发边听(检测冲突)，冲突则停发+随机退避(二进制指数退避算法)。退避时间=争用期×随机整数(0~2ᵏ-1,k≤10)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "CSMA_CA",
+    "front": "CSMA/CA与CSMA/CD区别？WiFi为何用？",
+    "back": "无线网(WiFi)用CSMA/Collision Avoidance：发送前等DIFS间隔→随机退避→发RTS→收CTS→发数据→收ACK。无线网不能同时接收和发送(半双工)，无法检测碰撞，只能避免。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "MAC地址",
+    "front": "MAC地址格式和特点？",
+    "back": "48位二进制=12十六进制(如00-1A-2B-3C-4D-5E)。前24位OUI厂商码(IEEE分配)，后24位厂商自定的唯一标识。固化在ROM中，全球唯一。广播地址：FF-FF-FF-FF-FF-FF。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "PPP协议",
+    "front": "PPP协议特点和链路控制？",
+    "back": "点对点协议，解决面向字符的SLIP不足，支持多种网络层协议(IP/IPX)。组成：封装方式(PPP帧)、LCP(链路控制协议，建立/测试/释放)、NCP(网络控制协议，配置网络层)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "网桥与交换机",
+    "front": "网桥和交换机的工作原理？自学习算法？",
+    "back": "网桥/交换机(多端口网桥)根据MAC地址表(转发表)转发帧。自学习：收到帧记下源MAC和端口。未找到目的MAC则泛洪(广播到所有端口除入口)。按生成树协议(STP)避免环路。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "VLAN",
+    "front": "VLAN的作用和实现方式？",
+    "back": "VLAN(虚拟局域网)：在交换机上逻辑分段，不同VLAN不可直接通信(需路由)。好处：广播域缩小、安全隔离、灵活网络管理。802.1Q帧在MAC中插入VLAN标签(4字节含VLAN ID)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "以太网帧格式",
+    "front": "以太网V2帧和802.3帧格式的区别？",
+    "back": "V2(DIX)：目的MAC(6)+源MAC(6)+类型(2,如0x0800 IP)+数据(46-1500)+FCS(4)。802.3：类型变长度字段(≤1500)，LLC/SNAP子层。V2为事实标准(实际使用)。最小64字节=512bit=(冲突窗口)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "IP地址分类",
+    "front": "A/B/C/D/E类IP地址范围和默认掩码？",
+    "back": "A:1.0.0.0~126.x/8。B:128.0.0.0~191.x/16。C:192.0.0.0~223.x/24(NAT中家用最多)。D:224~239组播。E:240~255科研保留。私有IP：A:10.x B:172.16~31.x C:192.168.x。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "子网划分",
+    "front": "子网划分方法和子网掩码的意义？",
+    "back": "从主机号部分借位作为子网号。子网掩码：网络位+子网位全1，主机位全0。借n位=2ⁿ个子网(全0和全1以前不用现在可用)。每子网IP数=2^(剩余位)-2(减去网络+广播地址)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "CIDR路由聚合",
+    "front": "CIDR无分类编址和路由聚合？",
+    "back": "CIDR(无类域间路由)：IP=网络前缀+主机号，记法IP/前缀长度(如192.168.1.1/24)。聚合(超网)：将多条路由项聚合成更短前缀的条目减少路由表。最长前缀匹配优先。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "ARP",
+    "front": "ARP协议的作用和工作流程？",
+    "back": "Address Resolution Protocol：IP→MAC解析。广播\"谁的IP是X？请告我你的MAC\"→目标主机单播应答自己的MAC。ARP缓存(arp-a)存IP-MAC映射。跨网络需路由→ARP路由MAC。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "ICMP",
+    "front": "ICMP协议的作用和常见类型？",
+    "back": "网际控制报文协议：差错报告/网络探询。类型：目的不可达(3)、TTL超时(11)、回显请求/应答(8/0=ping)、重定向(5)。ping用ICMP测试连通性，tracert用TTL超时逐跳追踪。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "DHCP",
+    "front": "DHCP自动获取IP的四个步骤？",
+    "back": "DORA：1.Discover(客户端广播找服务器) 2.Offer(服务器广播提供IP及参数) 3.Request(客户端广播选择某个IP) 4.Ack(服务器确认)。租约到期前续租。UDP 67(服务)/68(客户)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "NAT",
+    "front": "NAT的原理？NAPT(端口转换)如何实现？",
+    "back": "内网私有IP→公网IP(地址转换)：NAT路由器改IP头中源IP。NAPT(网络地址端口转换/端口级别：NAT表={<内网IP:Port, 外网Port>}。多个内网地址共用1个公网IP，端口号区分。问题：破坏端到端原则。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "RIP",
+    "front": "RIP协议特点和限制？",
+    "back": "距离向量算法，选最小跳数路径(跳数=路由器数)。最大跳数15(16=∞不可达)。好路由交换表(UDP 520)。慢收敛(坏消息传播慢，有计数到无穷问题)。RIPng支持IPv6。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "OSPF",
+    "front": "OSPF协议特点和适用场景？",
+    "back": "链路状态算法(OSPF)：全网络拓扑，Dijkstra计算最短路径(Dijkstra for SPF)。直接IP封装(协议号89)。收敛快，支持大型网络。划分area(area0骨干)。OSPFv3支持IPv6。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "BGP",
+    "front": "BGP的作用和基本概念？",
+    "back": "边界网关协议(路径向量)：自治系统AS间路由。BGP发言人(TCP 179)交换路由信息(BGP session)。选路原则：LocalPreference/ASPATH长度/Origin/MED等。运行在整个互联网(EGP)，仅存最佳路径。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "IP数据报格式",
+    "front": "IPv4数据报(包头)关键字段和分片相关？",
+    "back": "20B固定头：版本(4)、头长(5=20B)、总长、标识(属同分片)、Flags(DF禁分片/MF还有更多)、片偏移(8B为单位)、TTL(跳数上限，经一路由-1)、协议(6=TCP,17=UDP)、头校验和、源IP、目的IP。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "IPv6",
+    "front": "IPv6相比IPv4的主要改进？地址格式？",
+    "back": "1.128位地址 2.固定40B头(简化为8字段) 3.无校验和 4.内置IPSec 5.无广播含多播 6.流标签(QoS)。格式：8组4位十六进制以:分隔(2001:db8::1,连续0可压缩)。过渡：双栈、隧道、NAT64。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "路由器转发",
+    "front": "路由器的分组转发算法步骤？",
+    "back": "1.提取目的IP→查路由表(最长前缀匹配)。2.直连网络→ARP→直接投递。3.间接路由→寻下一跳路由器的MAC(发MAC为下一跳的)4.若有默认路由→走默认。TTL减1，为0则丢弃发ICMP超时。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "传输层作用",
+    "front": "传输层的主要功能？复用和分用？",
+    "back": "在网络层之上提供端到端进程通信。功能：复用(多个应用层协议同用传输层)/分用(端口号分发到对应进程)、差错检测、可靠传输(TCP)或尽力传输(UDP)。通过端口号标识应用进程。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "UDP",
+    "front": "UDP的特点、首部格式和适用场景？DNS为何用UDP？",
+    "back": "无连接、不可靠、无拥塞控制。首部8B：源端口+目的端口+长度+校验和。适用：DNS(RTT少开TCP开销大)、实时(视频/游戏/VoIP)、多播/广播。区域传送(大)用TCP。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "TCP首部",
+    "front": "TCP首部关键字段及其作用？20B固定首部有哪些？",
+    "back": "源/目的端口(各2B)、序号(Seq,4B,该段第一个字节的序号)、确认号(Ack,4B,期望对方下一个发送字节的序号)、数据偏移(头长/4字节单位)、6标志(URG/ACK/PSH/RST/SYN/FIN)、窗口大小(流量控制)、校验和、紧急指针。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "TCP序号与确认",
+    "front": "TCP的序号和确认号如何确定？",
+    "back": "序号Seq=本段发送数据第一个字节的序号。确认号Ack=期望对方发送的下一个字节的序号(收到B的Seq+L字节后，确认号=B的Seq+L)。ACK标志=1时确认号有效。纯确认段无数据序号不消耗。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "TCP三次握手",
+    "front": "TCP三次握手过程及状态变化？为何不能两次？",
+    "back": "1.Client→Server:SYN(seq=x); Client:SYN-SENT 2.Server→CLient:SYN+ACK(seq=y,ack=x+1); Server:SYN-RCVD 3.Client→Server:ACK(seq=x+1,ack=y+1); 双方ESTABLISHED。两次：防止旧的重复连接请求突然传到Server(server分配资源client不知，浪费资源)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "TCP四次挥手",
+    "front": "TCP四次挥手过程及TIME-WAIT作用？",
+    "back": "1.Active→FIN(seq=u) 2.Passive→ACK(ack=u+1) 3.Passive→FIN(seq=v) 4.Active→ACK(ack=v+1)→TIME-WAIT(2MSL)。TIME-WAIT作用：1.确保最后一个ACK被接收方收到 2.\"彻底等待旧连接的所有报文消失\"防止干扰新连接。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "流量控制",
+    "front": "TCP滑动窗口流量控制机制？",
+    "back": "接收端通告rwnd(接收窗口大小)：rwnd=接收缓冲区大小-已缓存未提交应用的数据。发送端根据rwnd调整发送窗口，防止接收端过载。0窗口：接收端发零TCP窗口查探。零窗口探测持续确保接收端恢复。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "拥塞控制",
+    "front": "TCP拥塞控制四个阶段？ssthresh和cwnd变化？",
+    "back": "慢开始：cwnd初始1MSS，每收到ACK cwnd+=1MSS(指数增长) 达ssthresh。拥塞避免：每RTT cwnd+=1MSS(线性增长)。快重传：收3个重复ACK(dup ACK)立即重传，ssthresh=cwnd/2。快恢复：cwnd=ssthresh+3MSS(跳过慢开始)，转为拥塞避免。超时则cwnd=1MSS进慢开始。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "重传机制",
+    "front": "TCP超时重传和快重传的区别？",
+    "back": "超时重传：RTO超时(MSS加权平均值求解RTT估计)，重传未确认最早的段，cwnd重置。快重传：3个重复ACK直接重传(不用等RTO)，配合快恢复。快重传比超时重传快得多(不用等计时器)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "TCP可靠传输",
+    "front": "TCP如何保证可靠传输？",
+    "back": "1.序号和确认(确保数据段有序到达) 2.超时重传(丢失段再发送) 3.校验和(数据完整性检测) 4.流量控制(rwnd限制发送速率) 5.拥塞控制(避免网络拥塞) 6.连接管理(SYN/FIN确保建立释放)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "DNS",
+    "front": "DNS的递归查询和迭代查询区别？解析过程？",
+    "back": "递归：本地DNS→根→TLD→权威，全包(客户端只一次请求)。迭代：本地逐级问根/TLD/权威，时返回下一步指引。通常：客户端→本地DNS递归 + 本地DNS→其他DNS迭代。DNS缓存减少查询。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "DNS记录类型",
+    "front": "DNS主要资源记录类型及含义？",
+    "back": "A：IPv4地址(域名→IPv4)。AAAA：IPv6地址。CNAME：别名(标准名字→别名→IP)。MX：邮件交换服务器。NS：域名→DNS服务器地址。SOA：起授权起始(版本/刷新)。PTR：反向解析(IP→域名)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "HTTP报文",
+    "front": "HTTP请求/响应报文格式？",
+    "back": "请求：方法(GET/POST/PUT/DELETE)+URL+HTTP版本\r\n 头部\r\n \r\n 实体主体(Body)。响应：HTTP版本+状态码+原因短语\r\n Header\r\n \r\n Body。常见方法：GET获取 POST提交 PUT修改 DELETE删除。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "HTTP状态码",
+    "front": "HTTP状态码分类及分别举例？",
+    "back": "1xx信息(100继续)。2xx成功(200 OK, 201 Created, 204 No Content)。3xx重定向(301永久,302临时,304 Not Modified)。4xx客户端错误(400请求错,401未授权,403禁止,404未找到)。5xx服务器错误(500内部错,502网关错,503不可用)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "HTTP/1.1到/2.0",
+    "front": "HTTP/1.0到HTTP/2.0的主要演进？",
+    "back": "HTTP/1.0：非持久连接(每次新TCP)。HTTP/1.1：持久连接(Keep-Alive)+管道化，但队头阻塞。HTTP/2.0：二进制分帧、头部压缩(HPACK)、多路复用(一连接并行多流)、服务器推送。HTTP/3.0基于QUIC(UDP)，进一步优化。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "Cookie与Session",
+    "front": "Cookie和Session的区别？",
+    "back": "Cookie：客户端存储(浏览器)，每次请求自动携带(set-cookie头)，容量限制约4KB。Session：服务器存储(内存/db)，session_id存cookie。Session更安全但不适合分布式扩展，Cookie可用于长期记住登录。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "FTP",
+    "front": "FTP为何需要两个连接？主动和被动模式？",
+    "back": "控制连接(TCP 21，持久)：传输命令和响应。数据连接(TCP 20)：传输文件数据。主动模式PORT：服务器从20主动连接客户端端口→客户端防火墙可能挡。被动模式PASV：服务器开随机端口，客户端连此端口→兼容防火墙，当前主流。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "电子邮件",
+    "front": "SMTP/POP3/IMAP各自的作用？MIME有什么意义？",
+    "back": "SMTP(25)：推送邮件(\"推\"协议)=客户端→SMTP服务器→对方SMTP。POP3(110)：下载到本地，功能简(下载后删除服务端)。IMAP(143)：服务器管理邮件(多端同步/文件夹/部分下载)。MIME：扩展邮件支持多媒体的非ASCII文本(中文/HTML/图片/音频等)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "万维网缓存",
+    "front": "Web缓存(代理服务器)如何提高性能？",
+    "back": "代理服务器缓存近期请求的网页。后续请求命中缓存则直接返回，不访问原始服务器。减少网络带宽使用、降低时延。条件GET(If-Modified-Since/If-None-Match)验证是否更新。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "CDN",
+    "front": "CDN的内容分发原理？",
+    "back": "内容分发网络(CDN)：在全球/区域部署边缘服务器，将内容(图片/视频/静态资源)复制到边缘节点。用户请求DNS解析→CDN GSLB调度到最近的边缘节点→从该节点获取内容(减少延迟流量)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "信息安全四要素",
+    "front": "信息安全/网络安全的核心四要素？",
+    "back": "机密性(加密防窃)、完整性(防篡改，哈希/MD验证)、可用性(DoS防御)、认证性(身份证明，签名/证书防冒充)。加\"不可否认性\"(防抵赖，数字签名)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "对称加密vs公钥加密",
+    "front": "对称密钥和非对称密钥加密的区别？",
+    "back": "对称：加解密同密钥(DES/AES)，速度快适用大体积，密钥分发是难点(需安全信道)。非对称(公钥)：加解密不同密钥(RSA/ECC)，公钥公开私钥保密，速度慢适用数字签名/密钥商定。混合：公钥加密对称密钥+对称加密数据。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "数字签名",
+    "front": "数字签名的原理和实现过程？",
+    "back": "发送端：hash(明文)→得到消息摘要，私钥加密摘要→签名。接收端：公钥解密签名→得到摘要；hash(收到的明文)→自己算的摘要；比较两摘要一致则可信(验证完整性和来源性)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "防火墙",
+    "front": "防火墙分类和各自工作原理？",
+    "back": "包过滤路由器：根据IP/TCP头过滤(ACL规则)。应用级网关(代理防火墙)：在应用层转发，检查数据内容。状态检查防火墙：跟踪连接状态(filter表中动态维护状态表)。DMZ(非军事化区)：隔离内外网(放对外的web/邮件服务器)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "MTU与IP分片",
+    "front": "MTU和IP数据报分片的关系？分片后的重组？",
+    "back": "MTU(最大传输单元)是链路层数据部分最大值(以太1500B)。IP数据报大于MTU则分片。片标识相同，DF禁止分片(有则丢弃发ICMP)，MF说明后面还有更多片。分片偏移用8B为单位。仅目的主机负责重组。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "TCP的MSL",
+    "front": "MSL(报文最大生存时间)的作用？",
+    "back": "MSL(Maximum Segment Lifetime)为IP包在网上存在的最大时间。TIME-WAIT=2MSL确保最后一个ACK能被对端接收到(如果丢失对端会重发FIN，本端能在TIME-WAIT期间重新响应ACK)。同时等待旧连接的所有报文在网中消失。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "Nagle算法",
+    "front": "Nagle算法的作用是什么？",
+    "back": "减少小包(如telnet)的发送：仅前一个数据的ACK收到后才发下一个数据。但如果数据量够大(达到MSS)则立即发送不等待。成批数据一次性发送，交互时减少网络负载(牺牲少许实时性)。待快交互可关闭Nagle(TCP_NODELAY)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "糊涂窗口综合征",
+    "front": "什么是糊涂窗口综合征(Silly Window Syndrome)？如何避免？",
+    "back": "接收端只通告很小窗口(如几个字节)，发送端按此窗口发极小报文(低效率)。避免：接收端不通告小窗口(直到>=MSS或>=1/2缓冲区)；发送端不发送小数据(达到MSS或Nagle)。Clark解决方案。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "TCP连接队列",
+    "front": "TCP全连接队列和半连接队列？",
+    "back": "半连接队列(SYN队列)：收到SYN未完成三次握手的连接。全连接队列(Accept队列)：完成三次握手等待accept()的连接。SYN Flood攻击半连接队列耗尽资源防：SYN Cookie。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "HTTP持久连接",
+    "front": "HTTP持久连接(Keep-Alive)的工作方式？",
+    "back": "HTTP/1.0默认非持久(每对象需新TCP)。HTTP/1.1默认持久连接+管道化(keep-alive)。一个TCP内可传多个请求/响应(流水/串行)。头部Connection:keep-alive(1.0)或close。结束条件：Content-Length含长度，或chunked分块传输(0长度块收尾)，或关闭连接。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "树的存储结构",
+    "front": "树的三种存储结构？",
+    "back": "1.双亲表示法：数组存每个节点的数据+双亲下标。2.孩子表示法：邻接表(每个节点一个孩子链表)。3.孩子兄弟表示法(二叉链表)：firstChild+nextSibling。各有适用场合。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "二叉树带权路径长度",
+    "front": "二叉树的最小路径长度MPL和带权路径长度WPL？",
+    "back": "MPL=Σ(根到所有节点路径长)，完全二叉树MPL最小。WPL=Σ(叶子权值×路径长)，哈夫曼树WPL最小。两个概念不同：MPL考虑所有节点(含内部)，WPL只考虑叶子。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "栈与递归调用",
+    "front": "函数调用压栈的过程？栈帧包含什么？",
+    "back": "调用函数时在系统栈分配栈帧(活动记录)：参数、局部变量、返回地址、帧指针(old EBP)。返回时弹栈帧恢复上一层执行。递归调用层数过多导致栈溢出(stackoverflow)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "优先队列实现",
+    "front": "优先队列可以用哪些数据结构实现？复杂度？",
+    "back": "无序数组/链：插入O(1)，删除max O(n)。有序数组/链：插入O(n)，删除max O(1)。二叉堆：插入/删除O(logn)，建堆O(n)，空间O(1)。已是最优实现。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "双端队列的栈模拟",
+    "front": "如何用两个栈实现队列？复杂度？",
+    "back": "栈1用于入队(push)，栈2用于出队。出队时：若栈2空则栈1全部倒入栈2。均摊O(1)。入队每次O(1)。同理用两个队列可以实现栈。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "BST的查找效率",
+    "front": "BST查找长度ASL如何计算？等概率下插入序列对形状的影响？",
+    "back": "等概率下ASL=Σ(深度×1/n)。最佳：平衡BST ASL≈O(logn)。最差：有序序列插入→退化成链表ASL≈O(n)。插入序列顺序决定BST形状。平均随机插入约1.39log₂n。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "BST插入序列与形状",
+    "front": "给定1到n的有序序列，有多少种BST形状？",
+    "back": "卡特兰数Cₙ。因为中序遍历必是1到n有序序列，BST的形状完全由先序/插入顺序决定。此处等价于前序序列为入栈序列，BST形状=合法出栈序列的卡特兰数。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "堆排序实现细节",
+    "front": "堆排序升序为什么用大根堆？空间O(1)如何实现？",
+    "back": "升序用大根堆：堆顶(arr[0])最大，和末尾交换，堆大小-1，下滤arr[0]。重复得升序。整个过程在原数组原地操作(输出区+堆区)，无需辅助数组→空间O(1)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "快排空间复杂度分析",
+    "front": "快排最坏空间复杂度O(n)和平均O(logn)的原因？",
+    "back": "递归调用栈深度取决于划分的均衡程度。每次选最小/最大元素划分→递归深度n→空间O(n)。三数取中/随机化后期望划分均衡→深度O(logn)→空间O(logn)。尾递归优化可降低到O(logn)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "基数排序vs计数排序",
+    "front": "基数排序与计数排序的关系？计数排序是稳定的吗？",
+    "back": "基数排序的每趟排序用稳定排序(可用计数排序)。计数排序：统计各值频次→累积频次→从后向前放入正确位置。计数排序是稳定的(从后向前处理确保后出现的同值元素位置更后)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "桶排序",
+    "front": "桶排序(Bucket Sort)的原理和期望复杂度？",
+    "back": "将元素分配到不同范围的桶中→每个桶内单独排序→合并。假设均匀分布，期望O(n)。桶数≈n时最佳。最坏情况元素集中在一个桶→退化为O(nlogn)或O(n²)。适合均匀分布数据。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "插入排序与希尔排序的关系",
+    "front": "为什么希尔排序效率更高？最后一遍d=1时为何快？",
+    "back": "希尔通过增大间隔进行预排序，使大元素快速后移小元素快速前移。d递减到1时序列已经基本有序，直接插入排序对基本有序序列O(n)~远好于O(n²)。本质：让插入排序在增量层面跨距离交换。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "堆的下滤与建堆复杂度",
+    "front": "堆的下滤操作的最坏比较次数？证明建堆O(n)。",
+    "back": "下滤：节点需和两个孩子中较大的比较→最多2次比较/层。第h层(从底算)元素数最多⌈n/2^(h+1)⌉个，每个下滤≤h次。总比较次≤Σh·⌈n/2^(h+1)⌉·2≈2n。所以建堆O(n)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "B树的关键字数与高度",
+    "front": "m阶B树的最小最大关键字数？最大高度和最小高度？",
+    "back": "最小关键字数=1+2(⌈m/2⌉+⌈m/2⌉²+...+⌈m/2⌉^(h-2))≤n。最大高度≤log_{⌈m/2⌉}((n+1)/2)+1。最大关键字数=(m-1)(1+m+m²+...+m^(h-1))=m^h-1。从而最小高度≥log_m(n+1)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "B树的删除分支",
+    "front": "B树删除时可能合并哪些节点？",
+    "back": "删除关键字后少于⌈m/2⌉-1个：检查左右兄弟，若有多的(>⌈m/2⌉-1)则借一个；若都不多则与兄弟+父节点中间关键字合并为一个节点。合并可能导致父节点关键字减少，可能逐层向上合并。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "B+树与B树的存储差别",
+    "front": "B+树内部节点不存记录指针，有什么优势？",
+    "back": "内部节点不含数据只做索引，可存更多关键字(≈2倍)→树更矮(磁盘I/O更少)。且所有数据存储在叶子层，查找性能稳定。适合数据库(MySQL InnoDB主索引即B+树)实现。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "散列表装载因子与扩容",
+    "front": "散列表何时扩容？扩容后的复杂度？",
+    "back": "当装载因子α超过阈值(如0.75)需要扩容。扩容：表长×2→取新的素数→所有元素rehashing重新插入新表。rehashing总时间O(n)但经均摊分析仍为O(1)(惰性策略)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "线性探测的聚集",
+    "front": "线性探测为何容易出现一级聚集Primary Clustering？",
+    "back": "增量1每次检测相邻的下个位置→冲突的元素会簇集(连续多个被占位，下一个空闲位离冲突点越来越远)。聚集增长时，新插入元素再落入这个聚集区的概率正比于聚集大小→形成自增强效应→第i次探测在最坏时与i有关。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "平方探测与双重散列",
+    "front": "平方探测可能面临什么问题？双重散列如何解决？",
+    "back": "平方探测可避免一级聚集，但所有同义词探测序列完全一样(二级聚集Secondary Clustering)。双重散列：第2个散列函数作用于关键字使不同同义词的探测步长不同，消除所有聚集，最接近随机探测。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "快排的枢纽选择策略",
+    "front": "选择pivot的三种策略？各自优缺点？",
+    "back": "1.首/尾元素：简单但有序时最坏O(n²) 2.随机选取：期望好(证明平均O(nlogn))，随机数生成开销小 3.三数取中(首/尾/中取中位数)：实践中最好(确保不被最坏输入影响)。STL sort使用三数取中+递归小规模转插入排序。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "归并排序迭代版",
+    "front": "归并排序非递归(迭代)时如何实现？",
+    "back": "步长从1开始每次×2：同规模子段两两归并。外层循环 while(len < n) { 内层2段归并:merge(i,i+len-1,min(i+2*len-1,n-1)) }。空间O(n)。避免递归开销但原理不变。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "堆和优先队列的关系",
+    "front": "二叉堆为什么适合实现优先队列？",
+    "back": "二叉堆满足堆序性(最大/小元素在堆顶)→getMax O(1)、deleteMax O(logn)(下滤)、insert O(logn)(上滤)。且用数组存完全二叉树、空间连续、缓存友好。均为优先队列最佳实现。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "链表归并",
+    "front": "两个有序单链表的归并算法？原地归并？",
+    "back": "双指针比较两链表当前节点，较小者接到新链表尾。O(m+n)。若需要原地(in-place)则更难：需调整next指针，不留坑。可用于链表的归并排序。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "循环链表判空",
+    "front": "不带头结点的循环链表如何判空？",
+    "back": "无头结点的循环单链表：L==NULL为空(因无节点)。带头结点：L->next==L为空。判尾节点：p->next==L(首节点)而为尾节点(循环特性)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "栈混洗算法",
+    "front": "枚举所有合法出栈序列的算法？",
+    "back": "回溯法：递归尝试入栈(尚有元素时)或出栈(栈非空时)，若某步出栈>入栈则剪枝。产生所有卡特兰数种排列。可用于验证序列合法性(给定序列模拟栈操作)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "BFS与DFS的应用",
+    "front": "BFS和DFS分别适用于哪些算法问题？",
+    "back": "BFS：无权最短路径、连通分量、二分图检测、最小生成树(Prim)、层序遍历。DFS：判环、拓扑排序、强连通分量SCC、连通分量(也可)、桥与割点、全排列、回溯搜索。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "最小生成树的Prim实现",
+    "front": "Prim两种具体实现方式(dist数组法和优先队列法)？",
+    "back": "dist法：未加入节点到MST的最近距离。O(V²)适合邻接矩阵稠密图。优先队列法：每次用堆选最小权候选边，O((V+E)logV)适合邻接表稀疏图。两者都是贪心扩展MST。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "Kruskal的并查集实现",
+    "front": "Kruskal算法使用并查集判环的伪代码？",
+    "back": "1.边按权升序排列 2.初始化并查集(每点各成一集合) 3.遍历每条边(u,v)，若Find(u)≠Find(v)，则加入MST, Union(u,v)。若等则形成环舍弃。重复直到n-1条边。O(ElogE)(排序)+O(E×α(V))(并查集)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "图的邻接多重表",
+    "front": "邻接多重表(无向图)与邻接表的区别？",
+    "back": "邻接多重表每边仅一个节点(而不是邻接表中每条边出现两个节点)，边节点双向链接对应两顶点的边链。存储空间省(无冗余边)且便于删除操作。适用于对边频繁操作的场景。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "函数时间复杂度分析技巧",
+    "front": "分析递归算法时间复杂度的常用方法？",
+    "back": "1.Master定理(T(n)=aT(n/b)+f(n)) 2.递归树法(画递归展开层次，每层开销求和) 3.代入法(猜测解+归纳证明) 4.迭代展开法(将递推代入自身直到base case)。M.T.最常用，需正确识别a,b和f(n)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "平衡二叉树的高度证明",
+    "front": "含n个节点的AVL树高度最多是多少？",
+    "back": "设N_h为高度h的AVL最小节点数。N_0=1,N_1=2,N_h=N_{h-1}+N_{h-2}+1。N_h≈φ^(h+1)/√5-1 (φ=1.618黄金比)。反解h≤1.44log_2(n+1)。故AVL查找最坏1.44log_2n。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "树与二叉树的遍历对应",
+    "front": "树的先根/后根/层次遍历对应二叉树的？",
+    "back": "先根=转二叉树的先序遍历。后根=转二叉树的中序遍历(左右根→左根右)。层次=转二叉树的层序遍历。这种对应使我们能用二叉树的遍历方法处理一般的树形结构。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "图的存储-十字链表",
+    "front": "有向图的十字链表存储结构？",
+    "back": "正交链表：顶点节点(数据+firstIn弧+firstOut弧)。弧节点(弧尾顶点+弧头顶点+同弧头的下条弧+同弧尾的下条弧+权值)。适合频繁计算入度/出度的有向图应用。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "非连通图的遍历",
+    "front": "对非连通图做BFS/DFS，如何确保所有节点被访问？",
+    "back": "必须外部循环遍历所有顶点，遇到未被访问的顶点就BFS/DFS一次。调用BFS/DFS的次数=连通分量个数。若为有向图则DFS次数没有意义(需SCC算法)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "有向图的逆邻接表",
+    "front": "逆邻接表(逆邻表)的用途？",
+    "back": "对于入度计算频繁的有向图问题，除邻接表(出边表)之外维护逆邻接表(入边表)。每个顶点的入边链表记录了所有弧头为该顶点的边，便于快速计算入度。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "哈希函数的冲突均匀",
+    "front": "好的哈希函数应该满足哪些条件？",
+    "back": "1.确定性(同样输入必定同样输出) 2.均匀分布(关键字映射到各散列地址等概率) 3.计算简单快速 4.雪崩效应(输输入微小变化→输出巨大变化)。用素数取模确保分布均匀。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "存储芯片地址线计算",
+    "front": "给定存储芯片容量，如何计算地址线数和数据线数？",
+    "back": "地址线条数=log₂(存储单元数量)。数据线条数=每个存储单元的数据位数。例：4M×8位芯片→地址=22根(4M=2^22)、数据=8根。芯片容量=2^地址×数据位。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "字位同时扩展",
+    "front": "构建存储器需要多片芯片时，字位如何扩展？各芯片连接？",
+    "back": "位扩展(扩字长)：多片并联，地址线/控制线共享，每片各负责不同的数据位→数据线拼接。字扩展(扩容量)：多片数据线共享，片选信号CE+C译码器选择不同芯片→地址扩充。先位扩展后字扩展。总片数=总容量/单片容量。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "组合逻辑ALU设计",
+    "front": "16位ALU的进位选择加法器(CSLA)原理？",
+    "back": "将16位分为多组(4位一组)。每组并行计算两路结果(进位输入0和1)，等待上组的进位输入后再用MUX选择正确结果。比串行进位快，比CLA省硬件。速度介于两者之间(近似O(log n))。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "浮点特殊值检测",
+    "front": "在浮点运算中如何检测溢出、下溢、非规格化？",
+    "back": "溢出：阶码超过最大可表示值。下溢：结果太小为0(阶码低于所能表示，转为非规格化数或截成0)。非规格化：阶码全0尾数非全0→隐藏位为0。上溢产生±∞(溢出标志置位)，下溢产生非规格化或0(下溢标志)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "双符号位判断",
+    "front": "用双符号位判断溢出时，01和10分别表示？",
+    "back": "01：正溢出（结果的符号位为0但溢出,两正数相加溢出）；10：负溢出（结果的符号位为1但溢出,两负数相加溢出）。双符号位即[sign_ext, sign]用2位表示，正常情况下两位相等(00或11)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "乘法-阵列乘法器",
+    "front": "阵列乘法器(华莱士树)的基本结构？",
+    "back": "被乘数和乘数各位按位与形成部分积→多个加法器阵列(进位保存加法器CSA)逐层压缩部分积，最终两级加法器得出结果。时间复杂度log n(通过Wallace Tree减少到约log_{1.5}n级)，远快于逐位累加O(n)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "补码除法的恢复余数和加减交替",
+    "front": "恢复余数法和加减交替法的区别？",
+    "back": "恢复余数：试商-减除数→够减则商1余数不变，不够则商0再将除数加回去(恢复)。加减交替(不恢复余数)：若不够减商0且下一步加除数，无需恢复。Booth算法类似思想应用于除法。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "浮点乘法运算步骤",
+    "front": "浮点乘法的运算步骤？",
+    "back": "1.阶码相加(注意偏移：结果阶=Ex+Ey-偏移(单精度127)。) 2.尾数相乘(定点乘法) 3.规格化(必要时移位调整) 4.舍入。浮点加减更难(需对阶)，而乘除在阶码和尾数分别处理(相对秩序更清晰)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "Cache一致性-MESI",
+    "front": "MESI协议的四种状态及其转换？",
+    "back": "Modified：仅本Cache有(已改)，内存陈旧→写回后转Exclusive。Exclusive：仅本Cache有且干净→被其他读转为Shared。Shared：多Cache共享干净→写前使其他Invalid +自身Modified。Invalid：行无效。总线侦听(snooping)实现各Cache状态同步。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "写缓存Write Buffer",
+    "front": "写缓存(Write Buffer)的作用？",
+    "back": "写直达写时，CPU将写操作写入Write Buffer后立即继续(不等写完成)，由WB缓冲后异步写入主存。缓解写直时每次访存延迟。写回法替换脏块写回主存也经过WB。小容量FIFO buffer。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "Cache缺失类型",
+    "front": "Cache缺失的三种类型(3C)？",
+    "back": "强制缺失(Compulsory/Cold Miss)：首次访问数据块必须载入(不可避免)。容量缺失(Capacity Miss)：Cache容量不足以装下所有活跃数据块。冲突缺失(Conflict Miss)：直接映射或组相联中因块映射到相同Cache行反复替换。增大相联度可减少冲突缺失。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "主存与Cache地址映射计算",
+    "front": "给定32位地址、8KB Cache、16B块、二路组相联，求各字段位宽？",
+    "back": "块:16B→offset=4位。Cache行数=8KB/16B=512行。二路组相联→256组→Index=8位(2^8=256)。Tag=32-8-4=20位。每个Cache行有Tag字段判断是否命中、V有效位、Dirty脏位、LRU位等。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "虚拟存储地址转换过程",
+    "front": "详细描述从虚拟地址到物理地址再访问Cache全过程。",
+    "back": "TLB(快表)查找：虚页号→物理帧号(命中)→形成物理地址。TLB缺失：查找页表(可能在Cache中)→更新TLB→形成物理地址。但若页表项无效→缺页中断换入→更新页表TLB。物理地址→Cache查找(物理索引物理标记)→命中则直接访，缺失则从主存取行填入。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "Cache查找策略(虚实)",
+    "front": "物理标记物理索引(PIPT) vs 虚拟标记虚拟索引(VIVT) vs 物理标记虚拟索引(VIPT)？",
+    "back": "PIPT(标准做法)：对物理地址做索引和标记→需完成地址转换才能查Cache(串行/并行TLB)。VIVT：全用虚拟地址，快但有同义词(别名)问题。VIPT(折中)：用虚拟低位index(在页内不变) + 物理tag，同时访问TLB和Cache(Index翻查同步完成)，最实用。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "DRAM刷新类型",
+    "front": "DRAM的三种刷新方式？",
+    "back": "集中式刷新：在刷新周期末尾将全部行刷一遍(死区时间长)。分散式刷新：每行插入一个刷新周期(各存周期=访问+刷新)(需双倍时间)。异步刷新：均摊刷新时间每t/m间隔刷新一行(m行总数)，将死区均匀分布，最常用。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "CD-ROM容量",
+    "front": "光盘的存储原理和容量？CD/DVD/BD各自多少？",
+    "back": "光盘通过凹凸坑记录数据(反射率变化)，螺旋轨道。CD:780nm激光650MB，DVD:650/635nm红激光4.7GB(单面单层)，BD蓝光405nm激光25GB(单层，多层100GB+)。容量=线密度×轨道密度×面积。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "SSD与闪存",
+    "front": "NAND闪存和NOR闪存区别？SSD内部结构？",
+    "back": "NAND：写块擦，高密度，USB/SD/SSD用。NOR：与NOR门逻辑，字节随机访问，读快写慢，芯片执行XIP。SSD内部：闪存芯片阵列+FTL(闪存转换层实现映射/垃圾回收/磨损均衡)，支持SATA/PCIe(NVMe)接口。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "总线的主要性能指标",
+    "front": "总线的主要性能参数有哪些？",
+    "back": "总线宽度(数据线条数，如32/64位)；总线工作频率(时钟频率MHz)；总线带宽=宽度/8×频率/每周期事务数；同步/异步传输方式；总线复用(地址/数据共享线)；总线仲裁方式等。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "PCIe总线",
+    "front": "PCI Express总线的特点和架构？",
+    "back": "基于串行差分传输(不像传统并口PCI)，点到点(每个设备独占通道→lane)，全双工。x1/x4/x8/x16(通道数)，带宽高(PCIe3.0每通道~1GB/s)。采用交换机结构(非共享总线)可并行通信。当前主流CPU-外设互联。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "USB基本特性",
+    "front": "USB总线的特点和版本演变？",
+    "back": "通用串行总线(Universal Serial Bus，广兼容)。拓扑：树形(Tiered Star)最多127设备(Hub可连)。传输类型：控制/批量/中断/等时。USB2.0(480Mbps)，USB3.0(5Gbps-超速，增加SuperSpeed线对)，USB4(40Gbps基于Thunderbolt)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "中断嵌套",
+    "front": "中断嵌套的实现和注意事项？",
+    "back": "高优先中断可打断低优先ISR执行。但进入ISR时CPU应开中断(至少执行到保存现场后开中断)，允许多重中断。低优先级ISR可能要使用原子操作保护临界区。堆栈需确保随时有足够空间容纳嵌套保存。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "I/O接口寄存器",
+    "front": "I/O接口中控制寄存器/状态寄存器/数据缓冲寄存器各自用途？",
+    "back": "CR(控制寄存器)：CPU发出命令(如开始读/写，中断使能)。SR(状态寄存器)：记录设备状态(忙/闲/出错/数据就绪)。DBR(数据缓冲寄存器)：暂存CPU和设备间交互的数据。这些寄存器即为I/O端口(IO port或MMIO空间)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "DMA控制器的内部结构",
+    "front": "DMA控制器内含哪些寄存器？传输流程？",
+    "back": "DMAC内：内存地址寄存器、字数计数器(剩余传输量)、控制/状态寄存器。流程：CPU初始化DMAC→DMAC从设备读取数据并写至指定内存区或反向→递减字数计数器→结束时发出中断。DMA周期挪用发生在CPU不需总线时(未触发总线请求)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "程序中断方式的接口",
+    "front": "中断请求触发器(INTR)和中断屏蔽触发器(MASK)的关系？",
+    "back": "INTR=1时有中断请求(由设备接口置位)。MASK=1时屏蔽该中断(CPU屏蔽指令设)。中断触发条件=INTR&MASK。此外需要设置中断优先级判优电路(硬件或中断控制器)和中断查询方式。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "微指令的格式",
+    "front": "垂直型微指令和水平型微指令各自编码方式？",
+    "back": "水平型：控存字宽很宽(如100+bits)，每一位(或字段)对应一个控制信号(1=使能)，同时可激活多个信号(高度并行)，但编码效率和灵活性低。垂直型：类似机器指令编码(如3位操作码+几种字段)，节省控存但执行多个微指令才能完成一个机器指令(慢)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "微指令的地址形成",
+    "front": "微程序控制器的下一个微地址如何产生？",
+    "back": "方式：1.顺序地址(PC+1增量) 2.跳转(由机器指令操作码映射到对应微程序的入口地址) 3.下址字段(微指令内包含下一微地址字段 指定后续微指令) 4.条件跳转(根据ALU标志/测试结果)。ROM存微程序，比组合逻辑灵活好修改。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "流水线-五段经典",
+    "front": "MIPS五段流水线各段操作详情？每段产生什么流水间寄存器？",
+    "back": "IF：PC→IM，PC+4→IF/ID寄存器(ID保存PC+4与指令)。ID：读寄存器、立即数扩展、控制信号生成→ID/EX寄存器。EX：ALU运算(有效地址/算术)→EX/MEM。MEM：访存Load/Store(数据存储器)→MEM/WB。WB：写回寄存器。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "流水线的暂停机制",
+    "front": "旁路和前推后仍无法解决需要暂停的情况？",
+    "back": "Load-Use数据冒险：后续指令在EX阶段用到的数据是上一Load指令在MEM阶段才能取出的(无法旁路)。需在ID阶段插入1个bubble(气泡)→nop，又称\"Load-use stall\"。编译器可重指令调度（scheduling）以减少此类停顿。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "超标量的指令发射",
+    "front": "单发射vs多发射，静态调度vs动态调度的区别？",
+    "back": "单发射：每个周期发射1条指令(标量)。多发射(超标量)：每个周期发射2+条指令(ILP。静态调度：编译器重新排序指令(避免相关导致的暂停)。动态调度：硬件(保留站/重排缓冲)打乱指令顺序(Tomasulo算法)，现代CPU用动态调度提高实际ILP。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "多核线程模型",
+    "front": "SMT(同步多线程/Hyper-Threading)与多核的区别？",
+    "back": "多核(片内多处理器)：每个物理核独立(各自完整的Cache/执行单元)。SMT：一个物理核心同时运行多个线程(共享同一套执行资源)，如Intel Hyper-Threading 2个逻辑核共享1个物理核的资源。SMT可在单个核上提升吞吐。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "固态盘FTL功能",
+    "front": "SSD的FTL(闪存转换层)主要功能？",
+    "back": "FTL将逻辑页地址映射到闪存物理页地址(因闪存不能就地更新→更新需异地写+垃圾回收)。功能：映射表管理、磨损均衡(Wear Leveling)、垃圾回收(GC/整理脏块)、坏块管理、预读策略。是SSD性能与寿命的关键。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "中断向量表",
+    "front": "8086实模式下中断向量表的结构？每个向量多大？",
+    "back": "实模式下0-1023共256个向量，每个4字节(CS:IP=段地址:偏移地址)。中断类型号n对应物理地址n×4。0类型(除零)1(单步陷阱)2(NMI)3(断点)...。保护模式下换用中断描述符表IDT(每个8字节)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "外部中断vs异常vs陷入",
+    "front": "三种中断源的区别？复位是什么？",
+    "back": "外部硬件中断(外中断)：INTR/NMI。异常(内中断/内部故障)：执行指令时产生的故障(除0/非法指令/缺页)。陷入(软中断)：INT n或syscall等软件触发(由程序主动产生)。复位：硬件复位信号使CPU回到初始状态，最高优先级。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "DRAM访问时序",
+    "front": "DRAM的读写时序和tRCD/CAS Latency/tRAS？",
+    "back": "行地址选通RAS→tRCD延迟(RAS->CAS Delay)→列地址选通CAS→CL(CAS Latency,列地址到数据输出延迟)→数据输出。tRAS(row active到预充电之间时间)。DRAM较快模式：Page Mode/Burst Mode连续操作当前行内多列(只需发列地址)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "递归与迭代的转换",
+    "front": "递归函数转为迭代的一般方法？",
+    "back": "1.尾递归直接转循环 2.一般递归用栈模拟系统栈(压栈参数/局部变量、记录返回位置)。二叉树非递归遍历即此思想。时间可能相同但空间减少(O(n)降到O(h)或O(1))。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "循环队列的tag判断",
+    "front": "用tag标志位区分循环队列空满时的判断？",
+    "back": "当front==rear时，tag=0表示空，tag=1表示满。每次插入置tag=1，每次删除置tag=0。不需牺牲一个存储单元。判断空满更直观但多维护一个标志。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "折半查找判定树",
+    "front": "折半查找的判定树是哪种二叉树？ASL的计算？",
+    "back": "折半查找判定树是一棵平衡二叉树(平衡二叉树或红黑树之类，近似AVL)。长度为n的表的判定树深度是⌊log₂n⌋+1。ASL成功≈log₂(n+1)-1。给定初始有序表建判定树用mid=(low+high)/2。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "分块查找(索引顺序查找)",
+    "front": "分块查找的结构和ASL计算？",
+    "back": "将表分为若干块(块间有序，块内无序)+索引表(每块最大关键字+起始地址)。查找：先二分查索引确定所属块→块内顺序查找。ASL=Lb+Lw，Lb索引二分log₂b，Lw块内平均s/2。取s≈√n时ASL最小≈√n+1。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "斐波那契查找",
+    "front": "斐波那契查找的原理？和折半的区别？",
+    "back": "用斐波那契数列确定分割点(而非中间mid)，分割比为黄金分割(约0.618:0.382)。仅需加减法无乘除，适合CPU无乘除指令的场景。均匀分布时ASL≈log_{φ}n≈log₂n。非均匀分布不如折半。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "插值查找",
+    "front": "插值查找的原理和适用条件？",
+    "back": "插值mid=low+(key-a[low])/(a[high]-a[low])×(high-low)。假设数据均匀分布，根据key值估算其大致位置。均匀分布O(log₂log n)；非均匀分布退化到O(n)。适合有序大字典(均匀分布表)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "稀疏矩阵的转置算法",
+    "front": "三元组表存储的稀疏矩阵快速转置算法(O(n+t))？",
+    "back": "1.统计T的每列元素个数num[col] 2.计算每列在转置后三元组中的起始位置cpot[col]=cpot[col-1]+num[col-1] 3.扫描原三元组，每个元素根据列号放到B中对应cpot位置，cpot[col]++。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "树的高度和深度",
+    "front": "树中节点的高度、深度的精确定义？树的度？",
+    "back": "深度：从根到该节点的路径长度(根深度=0或1视定义)。高度：从该节点到最远叶子的路径长度(叶高度=0)。树的度：各节点度的最大值。m叉树：每个节点最多m个孩子。m叉树≠度为m的树。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "正则二叉树",
+    "front": "什么是正则二叉树？正则二叉树叶子数量公式？",
+    "back": "正则二叉树：每个节点要么0个子节点，要么2个子节点(无度1节点)。n₀=n₂+1(二叉树通用性质)+n₁=0。总节点数n=2n₀-1。哈夫曼树是正则二叉树(因为构造过程只产生度为0和2的节点)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "三叉链表的线索化",
+    "front": "三叉链表如何实现线索化？",
+    "back": "在三叉链表(有parent指针)基础上同样利用空链域做线索(ltag/rtag)。遍历时可用parent指针回溯(后序遍历特别方便，因双亲结点易到达)。但增加了存储开销和复杂度。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "不同遍历顺序的线索化",
+    "front": "先序线索二叉树如何找后继？与前序线索有什么不同？",
+    "back": "先序线索后继：若有左孩子→后继=左孩子(先序根左右)；若无左但有右→后继=右孩子；若是叶子→rtag=1则直接后继线索。先序线索前驱更难找(需知道父节点和左右关系)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "森林与二叉树的一一对应",
+    "front": "n个节点的树/森林与二叉树的转换后各有多少节点？",
+    "back": "树转二叉树：同样n个节点(根无右子树)。森林转二叉树如果森林含T₁,T₂...Tₘ原树各有n₁...原来共N节点，则转换后二叉树也是N个节点。转换一一对应(可逆性)，且二叉树根节点代表第一棵树的根。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "树的直径",
+    "front": "如何求一棵树的直径(最长路径)？",
+    "back": "两次BFS/DFS。1.从任意节点出发找最远节点u。2.从u再找最远节点v。uv即为直径。O(n)。或树DP：对每个节点求其到子树叶的最长路径(max1+max2更新直径)。两种方法均O(n)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "二叉树最大宽度",
+    "front": "如何求二叉树的最大宽度(某一层节点数最大值)？",
+    "back": "层序遍历时记录每层节点数→更新最大值。或DFS时传入depth参数，数组count[depth]++。遍历完成后扫描count数组找最大值。O(n)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "树的遍历应用——表达式树",
+    "front": "表达式树三种遍历对应什么表达式？",
+    "back": "中序遍历=中缀表达式(需加括号)。先序遍历=前缀表达式(波兰式，运算符在操作数前)。后序遍历=后缀表达式(逆波兰式，运算符在操作数后)。后缀式最适合栈计算(无需括号)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "堆的topK问题",
+    "front": "如何用堆解决Top K问题？找最大的K个元素应用什么堆？",
+    "back": "找最大K个用最小堆(维护K个元素的小根堆)。遍历所有元素：堆不满直接进；比堆顶大则替换堆顶+下滤。最终堆中K个即为TopK。时间O(nlogK)，空间O(K)。如果K接近n则直接排序更好。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "基数排序的稳定性应用",
+    "front": "基数排序为什么必须每趟都用稳定排序？",
+    "back": "要保证高位排序时低位排序的结果不被破坏。假如先按十位排再按个位排，则个位排序靠稳定性保留十位的相同数字的前后顺序。选择不稳定排序会导致高位结果被覆盖，排序不正确。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "排序的决策树模型",
+    "front": "基于比较的排序算法的决策树下界？",
+    "back": "n元素有n!种可能排列，比较排序决策树叶节点至少n!个，树高度至少log₂(n!)。用Stirling公式≈nlog₂n-1.44n。故基于比较的排序算法下界Ω(nlogn)。堆/快/归并达到此下界(=比较最优)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "链表有环但快慢指针不同时",
+    "front": "若快指针走3步慢指针走1步，能检测到环吗？",
+    "back": "可能检测不到。设环长为C，若只差C步且倍数与速度差为C的因子可能永不相遇。快2慢1的速度差=1(每次相对距离增加1)，在C步内必相遇(MOD C等于0)。所以快2慢1是安全的。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "两个链表的公共节点",
+    "front": "寻找两个单链表的第一个公共节点？",
+    "back": "1.求两链表长度差d，长链表先走d步。2.同步遍历直到相遇即为公共节点(或都变null则无)。O(m+n)。或：用两栈存两链表节点从后向前比对→O(m+n)空间O(m+n)。或无栈双指针交替遍历(每个链表到头后转向另一链表)→相遇即交点。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "特殊矩阵存取函数",
+    "front": "三对角矩阵下标和压缩存储下标之间的映射关系？",
+    "back": "主对角线i=j→B[3i-2]。下三角线上的i=j+1→B[3i-1]。上三角线上的i=j-1→B[3i-3]。三对角矩阵的通用映射：B[2i+j-3] (|i-j|≤1时)。压缩存储后的元素访问需判断|i-j|≤1。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "快速排序非递归实现",
+    "front": "快排的非递归实现用什么数据结构？",
+    "back": "用栈保存区间起点和终点(low,high)。每次循环从栈取一个区间，Partition后得到pivot_idx，将子区间入栈(注意先右子区间后左子区间保持左优先)。时间仍O(nlogn)，空间O(logn)深度。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "堆排序TopK的变种",
+    "front": "求一个数组的中位数的最优方法？",
+    "back": "用快排partition思想(随机选择)：递归只取一侧，期望O(n)。或用双堆法(最大堆存左半<中位，最小堆存右半>中位)保持两堆平衡。STL nth_element实现O(n)查找第k小元素。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "并查集判断连通分量",
+    "front": "如何用并查集统计无向图的连通分量数？",
+    "back": "初始化：每个顶点一个集合。遍历所有边(u,v)：Union(u,v)。最后统计不同根节点(find(i)等于i)的个数=连通分量数。O(E×α(V))。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "定点数乘除运算硬件",
+    "front": "原码两位乘法和补码两位乘法的基本思想？",
+    "back": "每次处理乘数两位(而不是一位)，判断两位的值一次做+0/+X/+2X/-X。比一位乘快一倍。补码两位乘与Booth算法兼容，结合更多位。并行乘法用阵列乘法器(全部部分积一次性相加)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "数据的校验码",
+    "front": "奇偶校验、海明码、CRC分别能检测/纠正多少位错？",
+    "back": "奇偶：检1位错(纠0)。海明码：检2纠1(SEC-DED)。CRC：检测所有奇数位错/全部双位错/长度≤生成多项式次数的突发错。海明码需log₂n+1位校验码(满足2^r≥n+r+1,n信息位r校验位)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "原码除法的不恢复余数",
+    "front": "加减交替法的除法步骤(不恢复余数法)？",
+    "back": "1.被除数减除数→余数(-或+) 2.若余数为负商0,下一步加除数;若余数为正商1,下一步减除数 3.左移余数一位 4.重复直到获得足够商位数。比恢复余数法少一步(不需恢复)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "状态寄存器PSW标志位",
+    "front": "常见标志位ZF/CF/OF/SF各表示什么？",
+    "back": "ZF(零标志)结果=0。CF(进位/借位)无符号运算溢出。OF(溢出)有符号运算溢出。SF(符号)结果<0。PF(奇偶)结果低8位1的个数。AF(辅助进位)低4位向高4位进位。大多用于条件转移判断。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "立即数扩展",
+    "front": "MIPS/ARM中立即数扩展的原理？",
+    "back": "MIPS：16位立即数符号扩展为32位(需补16个符号位)。零扩展逻辑指令(and/or)。有符号和无符号扩展的区别：和lui(加载高位立即数)+ori(或立即数)可构造32位立即数。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "取指-译码-执行周期",
+    "front": "指令执行的一般流程(五阶段模型)详解？",
+    "back": "取指FETCH:PC→MAR→内存→MDR→IR,PC+1。译码DECODE:控制器解析指令产生控制信号。执行EXECUTE:ALU/移位器执行运算或地址计算。访存MEMORY:Load/Store。写回WRITEBACK:结果写入目的寄存器。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "指令的微操作序列",
+    "front": "对加法指令\"ADD R1,(R2)\"写出微操作序列(假设单总线结构)。",
+    "back": "1.PC→MAR, 读主存, PC+1→PC; 2.MDR→IR; 3.R2→MAR, 读主存; 4.MDR→Y; 5.R1+Y→Z; 6.Z→R1。每一步为一个机器周期(有时钟周期约束)。若指令需多个内存操作数则周期更多。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "微程序控制器结构",
+    "front": "微程序控制器的结构框图？",
+    "back": "控存(μROM存微指令)+μPC(微程序计数器)+μIR(微指令寄存器)+译码器+地址形成逻辑。μ指令=控制字段(控制信号输出)+下址字段(下条μ地址)。操作码映射MAP将机器指令OP→对应微程序的入口地址。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "水平型微指令编码",
+    "front": "水平型微指令的编码方法？字段直接编码法和间接编码法？",
+    "back": "直接编码：每一位对应一个控点信号。字段直接编码：将互斥的控点信号归为同一字段(组内用二进制编码选择，如3位选8选1)。间接编码：一个字段定义某一类控点，需另一个字段配合产生最终信号。字段直接编码兼顾速度和空间。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "流水线的效率计算",
+    "front": "实际流水线由于各种冒险导致的效率损失如何计算？",
+    "back": "实际CPI = 理想CPI(1) + 各类停顿造成的额外周期。停顿源：Load-use stall(1周期)、控制冒险(分支预测错清掉流水线~2周期)、结构冒险(气泡)、Cache缺失(几十周期)。整体加速比=深度×CPI_{理想}/CPI_{实际}。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "当前PC+偏移量计算",
+    "front": "相对寻址跳转/调用时，目标地址如何计算？",
+    "back": "目标地址=PC+偏移量(一般符号扩展)。如果是MIPS\"beq $1,$2,label\":目标=PC+4+偏移×4(因为指令字长4字对齐，所以偏移以字为单位)。如果是x86\"JMP rel8/rel32\":rel8符号扩展成16/32位后加到EIP。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "控制信号的分类",
+    "front": "微指令中控制信号如何分类(组合逻辑输出vs时序控制)？",
+    "back": "数据通路控制信号(ALU选通/寄存器写使能/多路器选择)大多是组合逻辑(在相应节拍内维持的稳定电平)。存储器读写/PC装载需要时序脉冲边沿触发(上升沿/下降沿)。多数控制信号在一个时钟周期内有效，下个周期改变。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "不同CPU结构下的流水线",
+    "front": "MIPS的五段流水和ARM的三段/五段流水的区别？",
+    "back": "ARM7(3段):取指→译码→执行(含访问和写回)。ARM9(5段):与MIPS一样IF/ID/EX/MEM/WB。ARM11+Cortex采用8-13段(多了预取/锁存/分支预测)。流水越深主频可更高但也更易受分支预测错误惩罚。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "SIMD技术",
+    "front": "什么是SIMD指令集？MMX/SSE/AVX的演变？",
+    "back": "单指令多数据：同时对多个数据并行执行同一操作。MMX(64位,整数8×8位或4×16位)。SSE(128位,浮点4×32位+整数)。AVX/AVX2(256位),AVX-512(512位,大量并行浮点/整数)。SIMD提升多媒体/矩阵运算吞吐。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "GPU的SIMT架构",
+    "front": "GPU与CPU架构的根本区别？SIMT是什么？",
+    "back": "CPU重延迟(large cache/乱序/分支预测)。GPU重吞吐(数千个轻量线程大批量同指令，硬件调度隐藏内存延迟)。SIMT(Single Instruction Multiple Threads)：多条线程共享同一指令(但与SIMD不同，各线程有自己寄存器和PC)。NVIDIA的CUDA用SIMT。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "总线的同步定时方式",
+    "front": "同步定时总线协议的优缺点？",
+    "back": "所有操作参照公共时钟，各设备在特定时钟沿发送/采样数据。优：快速简单。缺：所有设备需适应相同时钟频率(不能混不同速度设备)，时钟偏斜(skew)过长会失效。PCI/DRAM接口使用源同步时钟。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "总线通信的成组数据传送",
+    "front": "突发传输(Burst Transfer)是什么？有什么好处？",
+    "back": "一次提供起始地址后连续传输多个数据字(块的长度如Cache Line 64字节)，DDR内存和PCIe都支持。减少地址传输的次数和延迟。典型的DRR4 8n预取一次预取8个数据字流水到I/O缓冲队列输出。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "中断控制器的作用",
+    "front": "中断控制器(如8259A)的主要功能？",
+    "back": "接收多路中断请求(IRQ0-IRQ7) (可级联扩展)→判优→选最高优先级发INT给CPU→CPU响应后发INTA→中断控制器送中断号到数据总线→CPU用中断号查IDT/IVT获取ISR入口→IRET返回。支持中断嵌套和屏蔽(IMR)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "可编程定时器计数器",
+    "front": "可编程定时器(如8253/8254)在计算机中的作用？",
+    "back": "产生定时中断(OS的时钟中断/时间片调度)、DRAM刷新周期定时、喇叭方波等。内含计数器(减1)和计数值，定时到时产生OUT信号/中断请求。周期性模式(反复计数)和单次模式。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "异步通信的UART",
+    "front": "UART在串行通信中的应用和波特率的设定？",
+    "back": "通用异步收发器协议：高位起始位(1→0跳变)+数据位(5-8)+奇偶校验位+停止位(1/1.5/2)。波特率=Baud(符号率)×bits/s=bitrate。错误：帧错误(停止位)、校验错、溢出。COM口/控制台/单片机常用。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "磁盘RAID技术详解",
+    "front": "RAID 5的数据分布和校验方式？读写性能？",
+    "back": "块级striping+分布式校验(Parity循环分布各盘)。写需读-修改-写(Read-Modify-Write:读旧数据+旧校验→计算新校验→写新数据+新校验)，四步操作(\"小写惩罚\")。容1盘失效；性能：读=N-1倍;写=1×(不差)。现代RAID2.0为更细粒度的条带。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "符号位扩展对齐",
+    "front": "不同字长数据的符号扩展和零扩展指令？",
+    "back": "存储器取8位/16位有符号数→扩展到32位：lb(load byte)/lh(load half)符号扩展；lbu/lhu零扩展。ALU中用movsx/movzx(x86)完成。错误的扩展是常见bug来源(有符号用零扩展值出错)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "程序的编译链接过程",
+    "front": "编译/链接/装入三个阶段的产物和地址空间的变化？",
+    "back": "编译：源程序→目标模块(.o) (逻辑地址0开始)。链接：多目标模块+库→完整可执行文件(.exe/.out) (逻辑地址空间统一)。装入：可执行文件→内存(将逻辑地址重定位为物理地址)。分段/分页在装入阶段建立映射。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "存储器分配算法比较",
+    "front": "首次适应、循环首次、最佳适应、最坏适应的碎片产生？",
+    "back": "首次：外部碎片多但分配快。循环(下次适应)：碎片分布均匀(平均得多)。最佳：外部碎片最多(小块更碎)却空闲区出现大块概率低。最坏：大块分割快。选最坏算法反而产生最少的平均外部碎片(实际不太用)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "快表的刷新",
+    "front": "上下文切换时TLB如何处理？TLB Shootdown？",
+    "back": "进程切换：TLB中旧进程的映射无效(需刷新)——全部无效或FLUSH特定ASID的项。多核TLB一致：一个核修改页表后需通知其他核将对应TLB项作废(IPI→TLB shootdown)。ARM/Linux使用ASID+TLB无效接口。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "页的换入换出策略",
+    "front": "全局置换与局部置换、可变分配与固定分配的对比？",
+    "back": "固定分配局部：每进程固定物理块数，置换限于自己的页面(简单但缺页率高)。可变分配全局：OS动态调块数，全局选换出页(会导致进程线程间干扰)。可变分配局部：按缺页率调每个进程的物理块数(兼顾灵活和隔离)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "工作集时钟算法",
+    "front": "WSClock算法如何结合工作集和CLOCK算法？",
+    "back": "结合工作集(最近Δ次访问的页面集合)和CLOCK(循环链表+访问位)。检查指针经过的页面：若访问位=1则可能在工作集中跳过；若访问位=0且超出窗口时间则回收该页；否则继续下一轮。降低缺页率和实现较简单。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "缺页率PFF算法",
+    "front": "PFF(Page Fault Frequency)算法的原理？",
+    "back": "测量每个进程的缺页频率PFF。PFF高(超过上限)→增加分配的物理块数。PFF低(低于下限)→减少分配块数(换出部分)。通过动态调整块数平衡各进程的缺页率，减少整体抖动。属可变分配策略。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "页面的换出到交换空间",
+    "front": "换出的页面存在哪里？交换空间和文件系统在磁盘上的区别？",
+    "back": "匿名页(进程的堆/栈/数据段)换出到交换空间(swap分区或swap文件)；文件映射页(对应的文件执行/读取的页)换出时不需写回(因为磁盘已有)但需要重读。交换区在原始磁盘上通常有更优的布局(连续区)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "LRU的栈实现",
+    "front": "LRU页面置换算法的栈实现如何做到O(1)？",
+    "back": "用栈保存页面号序列(最近使用的在栈顶)。每次访问页号：若在栈中，移到栈顶；若不在则从栈底(最久未用的)淘汰，新页插入栈顶。但栈在硬件/O(1)中实现不易，软件实现用双向链表+Hash表。近似LRU常用CLOCK。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "文件打开表结构",
+    "front": "系统打开文件表、用户打开文件表、FCB的关系？",
+    "back": "每个进程有用户打开文件表(fd→系统打开文件表项指针)。系统维护全局打开文件表(一项=文件偏移量+访问权限+指向FCB的指针)。FCB(inode)存在磁盘(文件的基本元数据)。fork时父子继承同样文件表项(共享偏移量)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "文件的存储空间分配",
+    "front": "混合索引中各级索引能表示的最大文件大小？",
+    "back": "假设块4KB，块指针4B→每索引块有1024个块指针。10个直接块=40KB。一级间接块=1024×4KB=4MB。二级间接块=1024×1024×4KB=4GB。三级间接块=4TB。此即Unix inode的13个块指针的模式。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "目录和硬链接",
+    "front": "目录条目和inode的关系？一个inode可以有多个目录条目指向吗？",
+    "back": "目录=文件名→inode号的映射表的文件。多个目录条目指向同一个inode即硬链接(links > 1)。删除文件只删除目录条目；只有当链接数links=0且无进程打开时才释放inode和块。软链接(符号链接)是独立的特殊文件存路径。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "文件系统缓冲",
+    "front": "页高速缓存(Page Cache)的作用？",
+    "back": "文件读写的缓冲在物理内存(Page Cache)。read:先查页缓存，命中则直接拷贝到用户缓冲区(避免磁盘IO)，未命中则从磁盘读取放入页缓存。write:write()先写入页缓存(脏页)，稍后异步写回(write back)，用flush/fdatasync可强制。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "磁盘空闲空间管理方法对比",
+    "front": "位示图法和成组链接法各自的效率对比？",
+    "back": "位图：每块1bit→n块占据n bit，分配/回收通过置位/清零。成组链接(unix)：将空闲块分组成链表(一组存下一组号+空闲块号表)，每盘仅存一个超级块(起始数据)。比位图更省空间，但碎片恢复复杂。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "I/O软件层次",
+    "front": "I/O软件的四个层次？",
+    "back": "1.中断处理程序(底层)。2.设备驱动程序(各设备厂家代码，提供统一接口)。3.与设备无关的操作系统软件(统一命名/保护/缓冲/错误报告)。4.用户层I/O软件(库函数如printf/fopen)。各层隐藏底层具体实现细节。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "SPOOLing系统应用",
+    "front": "SPOOLing系统的输入井和输出井的作用？",
+    "back": "为慢速独占设备在磁盘开缓冲区：井充当虚拟设备。多用户共享同一个物理设备的打印工作被假脱机到输出井各进程各自的打印文件，由spooling守护进程逐个输出。输入井预输入卡片/终端等数据。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "设备驱动程序接口",
+    "front": "Linux设备驱动程序的file_operations结构体常见函数？",
+    "back": "open/release/read/write/ioctl/lseek/mmap/fsync等函数指针。驱动只需实现所需操作(如键盘无需lseek)，不必全部。VFS通过file_operations调用特定驱动，屏蔽硬件差异。字符设备和块设备的struct不同。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "I/O调度算法在块设备层",
+    "front": "Linux块层的电梯调度算法(deadline/CFQ/noop)各自特点？",
+    "back": "noop(无调度):FIFO合并相邻请求(用于SSD随机访问快)。deadline:保证读写请求有最大延时上限(防止饥饿)。CFQ(完全公平队列):为每个进程分配时间片和I/O带宽，公平。磁盘的情况下CFQ和deadline综合考虑。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "自旋锁vs信号量vs互斥量",
+    "front": "内核同步机制中自旋锁/信号量/互斥量的使用场景？",
+    "back": "自旋锁(spinlock)：忙等，持锁时间极短(不允许阻塞)且CPU不予调度→SMP核间同步。信号量(semaphore)：可阻塞睡眠，适合持锁时间长或需同步进程数多(如PV操作)。互斥量(mutex)：=二值信号量(加锁互斥)但更高效(有所有者身份检测/优先级继承)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "RCU同步机制",
+    "front": "RCU(Read-Copy Update)的基本思想？适用场景？",
+    "back": "读者无需锁，写者复制数据→修改→原子指向新数据→旧数据在grace period后释放(所有读者退出临界区)。适用于读远多于写的场景(Linux内核中的路由表/netfilter等)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "网络性能指标",
+    "front": "带宽、吞吐量、时延、时延带宽积的含义？",
+    "back": "带宽(理论最大值bps)、吞吐量(实际有效数据率bps)、时延(发送+传播+处理+排队)、时延带宽积=传播时延×带宽(链路管道容量)。不同应用关注不同指标：实时关注时延抖动用UDP；下载批量关注吞吐。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "数据链路层帧定界方式",
+    "front": "四种帧定界方法？哪种使用最广泛？",
+    "back": "1.字节计数法(头部含长度)2.字符填充(开始/结束标记用特定控制字符转义)3.字节插入/比特填充(PPP/SLIP用定界符0x7E转义)4.违规编码法(物理层冗余的编码方式，如以太网的前导码+帧起始定界符)5.HDLC/SDLC的flag=01111110。以太网用违规编码。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "CRC检测",
+    "front": "CRC-CCITT的生成多项式？CRC能检测哪些错误？",
+    "back": "G(x)=x¹⁶+x¹²+x⁵+1(CRC-CCITT)，CRC-32:G(x)=x³²+...+1(极强检错)。能检：所有奇数位错；所有单/双位错；所有≤r位(r=生成多项式次数)突发错；长度=r+1的突发错检测概率=1-2^{-(r-1)}。比校验和检错强多(但计算稍贵)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "PPP协议帧格式",
+    "front": "PPP帧格式和转义字符？",
+    "back": "Flag(0x7E)+地址(0xFF)+控制(0x03)+协议(2B,标识载荷类型)+信息段+校验和(2B CRC)+Flag(0x7E)。转义：0x7E→0x7D 0x5E, 0x7D→0x7D 0x5D。控制符填充解决Flag冲突。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "CSMA/CD退避算法",
+    "front": "二进制指数退避算法的详细流程？",
+    "back": "碰撞发生后：重传次数k=min(attempts,10)。在[0, 2ᵏ-1]中随机选r, 等待时间=r×512比特时间(51.2μs=争用期)。第16次碰撞后放弃(向上层报错)。等于短程有最大延迟保证，避免持续性碰撞。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "争用期与最短帧长",
+    "front": "以太网为什么有最小帧长64字节？与争用期关系？",
+    "back": "若发送端在发送完最小帧之前检测到碰撞，才能确保发送端知道碰撞(从而可重发)。64字节(512bit)的传输时间=争用期2τ×10Mbps=51.2μs(对应2500m+4中继器的传统以太配置)。百兆千兆以太网争用期缩短同时调小帧长或增大速率。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "交换机与集线器的区别",
+    "front": "交换机(网桥)和集线器(中继器)在网络中的本质区别？",
+    "back": "集线器：所有端口共享带宽(同一冲突域)，广播到所有端口，半双工(CSMA/CD)。交换机：每端口独享带宽(不同冲突域)，基于MAC地址表自学习转发(单播不广播)，可全双工(无碰撞)，支持VLAN。交换机隔离冲突域。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "交换机的自学习算法",
+    "front": "交换机自学习与转发流程？",
+    "back": "收到帧→记源MAC地址和到达端口号→查目的MAC(转发/过滤/泛洪)。已知目的MAC且端口不等于源端口→从目的端口转发；等于源端口则丢弃(过滤)；未知目的MAC→泛洪(广播到所有端口除源端口)。定时器超期删除旧表项。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "STP生成树协议",
+    "front": "STP协议的作用和基本选举过程？",
+    "back": "防止网络成环导致的广播风暴(交换机环路)。选根桥(最小Bridge ID)→每个非根桥选最小的根端口(到根开销最小→若有等开销选邻居Bridge ID小)→每个网段选举一个指定端口(比开销+发送者BID)→其他端口设为阻塞态。BPDU报文交换信息。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "IPv4分类与子网划分",
+    "front": "用一个C类地址划分若干子网的计算？",
+    "back": "子网数=2^(借位数)。每个子网IP数=2^(剩余主机位数)-2(减网络地址+广播地址)。若C类IPv4/24，借3位→2³=8子网，每子网内2^(8-3)-2=32-2=30可用IP，子网掩码=/27(255.255.255.224)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "IP数据报分片与重组",
+    "front": "给定MTU和数据报长度，如何计算分片数和每片的大小/偏移？",
+    "back": "数据报总长-20B(IP头)=纯数据荷载。每分片纯数据<(MTU-20B)且是8B倍数(除最后一片外)。偏移=该片数据起始字节/8(以8B为单位)。MF标志=1(除最后一片外)。标识相同。分片在地点重组。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "ICMP类型应用",
+    "front": "ping和tracert都使用了哪些ICMP类型？",
+    "back": "ping: 请求ICMP Echo Request(Type 8)→应答ICMP Echo Reply(Type 0)。tracert(traceroute): 从TTL=1开始递增。TTL超时→ICMP Time Exceeded(Type 11)。最后一跳Reply(Type 0)。至此确定路径上所有路由器。UNIX用UDP包Windows用ICMP回显。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "路由表与路由优先级",
+    "front": "路由器中直连路由/静态路由/动态路由的优先级和选路？",
+    "back": "最长前缀匹配优先(相同IP前缀长度越长越优先)。若多条匹配等长的前缀，选择管理距离最小的。管理距离AD：直连=0，静态=1，RIP=120，OSPF=110，BGP(外部)=20，BGP(内部)=200。越小越可靠。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "RIP_v2的改进",
+    "front": "RIPv1和RIPv2有什么区别？",
+    "back": "RIPv2支持子网掩码(无类路由)；支持CIDR；下一跳地址字段；认证(密码MD5)；组播通告(224.0.0.9而v1广播255.255.255.255)。其他相同(仍最大15跳，UDP520)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "OSPF的LSA类型",
+    "front": "OSPF中的路由器LSA和网络LSA是什么？",
+    "back": "Router LSA(Type1)：每台路由器(发给本区)，描述该路由器各link的状态和开销。Network LSA(Type2)：由DR(指定路由器)产生，描述所连广播网上的所有邻居。SPF最短路算法基于LSA数据库构建全网拓扑。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "运输层端口",
+    "front": "熟知端口(0-1023)/注册端口(1024-49151)/动态端口(49152-65535)？",
+    "back": "熟知：HTTP=80，HTTPS=443，FTP=21/20，SSH=22，SMTP=25，DNS=53，DHCP=67/68(server=67 client=68)，POP3=110，IMAP=143。mysql=3306，redis=6379(注册端口)。动态端口供客户端临时bind。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "TCP校验和",
+    "front": "TCP校验和报文覆盖哪些内容？伪首部包含什么？",
+    "back": "校验范围：TCP段(头部+数据)+12B伪首部(源IP、目的IP、保留(0)、协议(6=TCP)、TCP段长度)。伪首部只在校验时添加不传输，防止将错误IP层交给错误协议/进程。UDP类似但只覆盖UDP段。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "SYN攻击与防御",
+    "front": "SYN Flood攻击原理和SYN Cookie防御？",
+    "back": "攻击者发送大量SYN段但不完成第三次握手，耗尽服务器半连接队列。SYN Cookie防御：服务器收到SYN时不分配连接状态资源，而是用加密算法(含源IP/端口/时间/密钥)生成Seq(seq=SQN_cookie)作为Cookie放入SYN+ACK中；等收到客户端的ACK验证Seq是否合法，合法才分配资源。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "滑动窗口与糊涂窗口",
+    "front": "发送端Nagle和接收端Clark方案分别解决什么？",
+    "back": "Nagle算法：发送端积累数据到满MSS或前数据已ACK后才发送(减少小包)。Clark解决方案：接收端不通告极小的窗口(只通告≥MSS或≥缓冲区1/2的窗口)。两者结合防止Silly Window Syndrome。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "DNS缓存与TTL",
+    "front": "DNS缓存的TTL作用？降低域名解析时间的策略？",
+    "back": "TTL(Time To Live)指定DNS记录cached可存活时间(秒)。TTL→0时缓存失效需重新进行权威解析。CDN用极短的TTL(如60-300s)实现快速切换服务器地址。DNS预解析和查询缓冲(Prefetch)提升浏览速度。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "SNMP",
+    "front": "SNMP的应用和核心操作？",
+    "back": "简单网络管理协议(Simple Network Mgmt Protocol)：管理站通过SNMP协议(GET/SET/TRAP)对网络设备(路由器/交换机)的MIB(管理信息库)进行监控和配置。GET获取数据，SET修改配置，TRAP主动告警(设备主动发)。v3增加安全特征。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "HTTP头部字段",
+    "front": "常见HTTP头部字段及作用？",
+    "back": "通用头：Connection, Date, Cache-Control。请求头：Host(必填), User-Agent, Accept, Cookie。响应头：Set-Cookie, Content-Type, Content-Length, Location(重定向), ETag(条件请求)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "HTTP缓存机制",
+    "front": "浏览器缓存验证的ETag/If-None-Match和Last-Modified/If-Modified-Since？",
+    "back": "Last-Modified:文件最后修改时间。ETag(实体标签)：文件版本标识(哈希)。条件请求发起时携带：If-Modified-Since(304后内容的L-M)和If-None-Match(对应的ETag)。服务端决定是否需要重发送内容(304 Not Modified)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "二叉树与森林遍历关系",
+    "front": "森林的中序遍历结果等于对应二叉树的？",
+    "back": "森林的中序遍历=对应二叉树的先序遍历？不——森林的中序遍历在二叉树对应中是中序。森林的先序=二叉树的先序；森林的中序=二叉树的中序。便于理解转换后多种遍历之间的对应。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "哈夫曼编码的构造",
+    "front": "给定字符频次(如a:5 b:9 c:12 d:13 e:16 f:45)构建哈夫曼树并写出编码。",
+    "back": "1.选最小的5和9合并=14 2.12+13=25 3.14+16=30 4.25+30=55 5.45+55=100。编码思路：定左0右1。f:0,e:100...编码后验证该编码为前缀码不可有二义性。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "B树计算题",
+    "front": "5阶B树含n个关键字的最小最大高度？",
+    "back": "5阶B树(m=5)每节点最少⌈5/2⌉=3个关键字(除根外2个)；最多4个关键字。n≥1+2×(3^0+3^1+...+3^(h-2))→n≥1+2×(3^(h-1)-1)/(3-1)等。最大高度≈log₃((n+1)/2)+1。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "图与树的连通性计数",
+    "front": "n个节点的连通无向图至少多少条边？无向树有多少条边？",
+    "back": "连通图≥n-1条边(如链图)且恰好生成树(n-1条边)。边=n-1的不一定连通(如孤立点加环。无向树=连通无环图=(n-1条边)+无回路+连通性。无向树必满足边数=n-1且连通。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "AOE网的活动时间",
+    "front": "AOE网中的关键路径长度决定了什么？若要缩短工期该缩短什么？",
+    "back": "关键路径长度就是整个工程的最短工期。若想缩短工期，必须缩短关键活动的时间(非关键活动缩减无意义)。缩短关键活动可能导致关键路径变更→重新计算。并行和非关键路径资源可利用优化(时间-成本均衡)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "松弛操作",
+    "front": "最短路径算法中的松弛(Relaxation)操作？",
+    "back": "if (d[v] > d[u] + w(u,v)) { d[v] = d[u] + w(u,v); parent[v] = u; }。如果从u到v的新路径比当前d[v]短，则更新d[v]并记路前驱。Dijkstra和Bellman-Ford都基于多次松弛直到收敛。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "A*算法",
+    "front": "A*算法与Dijkstra的区别？启发式函数h的影响？",
+    "back": "A*有估价函数f(n)=g(n)+h(n)(实际代价+预估代价)。h=0则退化为Dijkstra(盲搜)。h≤真实距离则保证最优解(可纳启发式)。h越大搜索节点越少但可能导致次优(如果h过大于真实距离)。网格寻路常用曼哈顿距离/对角线距离作启发值。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "字符串模式匹配综合",
+    "front": "BM(Boyer-Moore)和Sunday算法与KMP的对比？",
+    "back": "BM从模式串尾部开始匹配(能跳更大的步长)，坏字符规则和好后缀规则决定右移距离。最坏O(mn)但实际中速度快于KMP(O(n))。Sunday算法进一步优化(检查主体中下一字符)。模式串匹配使用哪种取决于模式长度和字符集大小。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "Rabin-Karp算法",
+    "front": "Rabin-Karp字符串匹配中的滚动哈希？",
+    "back": "借助哈希快速比较而非逐个字符比较模式与子串。滚动哈希：已知hash(s[i..i+m-1])可O(1)计算hash(s[i+1..i+m])。匹配时比较hash值，hash相等后再逐字符比较确定是否真匹配(防哈希碰撞)。平均O(n+m)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "完全二叉树的判定优化",
+    "front": "判断完全二叉树的更优方法(不用层序队列)？",
+    "back": "可以用DFS记录每个子节点编号。完全二叉树按满二叉树编号若能编号<节点总数且无空档则为完全二叉树。在DFS过程中若节点编号>n则不是；且对所有节点的孩子编号需依次连续。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "data-structure",
+    "knowledgePoint": "红黑树插入修复",
+    "front": "红黑树插入后的修复步骤？",
+    "back": "插入节点初始红，然后分情况：案1:叔叔红→变色(父/叔黑，祖父红)+递归上溯。案2/3:叔叔黑+LL(RR或LR)旋转变色。最多2次旋转修复(LL/LR其一)。复杂度O(logn)。红黑树插入后相对AVL旋转次数更少。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "内存交错存储",
+    "front": "什么是多体交叉存储器？低位交叉和高位交叉？",
+    "back": "多体交叉：将连续地址分配在不同存储体(bank)，使连续访问可在不同体间流水重叠。低位交叉编址(低位选体高位体内) 可流水化连续访存，高位交叉反之。现代SDRAM用多bank实现，CPU超标量一次可访问多体。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "Cache的预取技术",
+    "front": "Cache预取(Prefetch)的方式和效果？",
+    "back": "硬件预取：检测顺序访问模式(如连续load指令)自动预取后续块到Cache+预取缓冲器。软件预取：编译器在load之前插入prefetch指令拉入Cache。减少强制缺失但可能污染Cache (多余预取)且增加带宽开销。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "victim cache",
+    "front": "受害缓存(Victim Cache)的作用？",
+    "back": "Cache替换被逐出的块暂存在小容量的全相联Victim Cache中。缺失时先查Victim Cache→命中则补回Cache+交换。减少直接映射的冲突缺失，作为主Cache的后备。4-8条目即可减少约20%的冲突缺失。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "Trace Cache",
+    "front": "追踪缓存(Trace Cache)的原理？",
+    "back": "存储已经译码的动态码指令序列(非按照取指地址存放，而是按照程序实际执行的顺序和已译码的微操作)。Pentium 4用Trace Cache存储μOP，跳过x86复杂指令译码提升流水线吞吐。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "分支预测精度",
+    "front": "2位分支预测器和Gshare/Tournament预测器？",
+    "back": "2位预测器(00强不跳/01弱不跳/10弱跳/11强跳) 每次准确则往强方向移。Gshare：全局历史+PC哈希索引模式表(PT)捕捉特定程序的分支配对模式。锦标赛预测器(Tournament)：两预测器(局部+全局)竞争选出最好的，Alpha和现代x86常用。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "精确异常与重启",
+    "front": "流水线怎样实现精确异常(Precise Exception)？",
+    "back": "故障指令更新完所有流水段后才处理异常。延迟处理：故障时阻止后续指令提交，等前序所有指令都完成→保存精确状态(PC→EPC)→跳转到异常处理→处理完可精确重启。用重排缓冲(ROB)协调指令按序提交。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "Tomasulo算法核心",
+    "front": "Tomasulo算法如何解决WAR和WAW冒险？",
+    "back": "通过保留站(Reservation Station)打乱执行顺序，用寄存器重命名(物理寄存器替换逻辑寄存器)消除WAR/WAW伪相关。CDB(通用数据总线)广播结果→等该结果的保留站接收。允许乱序执行+精确中断→现代CPU基础。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "寄存器重命名原理",
+    "front": "为什么寄存器重命名能消除假数据相关？",
+    "back": "每个写操作分配一个新物理寄存器(或ROB项号)，读操作从最近一个\"写同逻辑寄存器\"的物理寄存器读取。消除WAR(读后写→读的是旧物理寄存器的值)和WAW(两写分配不同物理寄存器，后者覆盖前者)。暴露真实的数据流依赖RAW。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "MOESI协议",
+    "front": "MOESI相比MESI多了O状态(Owned)的意义？",
+    "back": "O状态=Cache行被修改过且可能被其他cache共享(Shared但dirty)。其他缓存有S(clean copy)副本且以O副本为最新值。M/O差别：O允许共享而M独占(Modified Exclusive)。当其他cache要读脏行时O→转发数据避免写回主存。AMD Opteron用MOESI。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "非临时指令",
+    "front": "非临时(Streaming)Store指令的作用？",
+    "back": "告诉CPU不要将数据加载到Cache(直接经写缓冲写回主存)，避免污染Cache(数据只会用一次→不存cache)。适用：大量数据移动/初始化而不立即再用(Memcpy/ memset)。x86:MOVNTI/MOVNTQ/MOVNTPS，ARM:STNP。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "时钟域交叉",
+    "front": "CPU和慢速外设之间如何进行跨时钟域数据交换？",
+    "back": "使用异步FIFO(双端口存储器)：写端用CPU时钟写入；读端用外设时钟读出。空/满标志根据格雷码指针判断。或在同步接口中用同步器(2级FF)防止亚稳态。PCIe也是多lane串行取消公共时钟源(嵌入式Clock)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "computer-organization",
+    "knowledgePoint": "错误检测与纠正",
+    "front": "服务器内存为何用ECC(错误纠正码)？",
+    "back": "ECC用额外的位(如8位检测64位)可纠正1位错误检测2位错误(SECDED/汉明码)。宇宙射线→DRAM单元翻转(软错误)→ECC可使系统继续运行而不崩溃。非ECC不可纠错→可能导致数据损坏/系统崩溃。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "操作系统接口分类",
+    "front": "操作系统的三种用户接口？",
+    "back": "1.命令接口(命令行/CLI) 2.程序接口(系统调用API) 3.图形用户接口(GUI)。系统调用是用户程序获取OS服务的唯一途径。Windows GUI和Linux GUI都是调用底层系统调用。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "大内核与微内核的性能对比",
+    "front": "为何Linux等主流系统用宏内核而非微内核？",
+    "back": "宏内核效率高(一次函数调用无需IPC)，功能都在内核态；微内核IPC开销大(消息传递)，但模块化隔离好。Linux实际采用混合：内核模块动态加载支持多种功能，在效率与模块化之间权衡。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "原语的实现原理",
+    "front": "原语的原子性如何通过关中断保证？",
+    "back": "单CPU系统：关中断(STI/CLI)后执行不可被中断切换→执行完再开中断。因此原语连续不可分割。多CPU还需额外的锁机制(自旋锁)，因为关中断只影响当前CPU。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "守护进程",
+    "front": "什么是守护进程(Daemon)？与普通进程的区别？",
+    "back": "守护进程是后台运行的常驻进程，脱离终端控制(无控制tty)。特点：父进程为init(1)(或systemd)；无控制终端；长期在后台提供服务(httpd/sshd/crond)。创建：fork+setsid脱离会话成为新进程组和会话的首进程。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "孤儿进程与僵尸进程",
+    "front": "孤儿进程和僵尸进程的区别？如何避免僵尸进程？",
+    "back": "孤儿：父进程终止但子进程还在，由init收养善后。僵尸：子进程终止但父进程未调用wait()回收→子PCB保留(显示Z状态)，占用PID等。解决：父进程调用wait()/waitpid()；或忽略SIGCHLD信号；或fork两次使孙进程被init收养。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "实时操作系统",
+    "front": "硬实时和软实时操作系统的区别？",
+    "back": "硬实时：任务必须在期限内完成(超时系统失败，如航空控制/汽车刹车)。软实时：偶尔超时可容忍但影响品质(如视频播放/音频)。RTOS调度策略：RM(单调速率优先)和EDF(最早时限优先)。Linux PREEMPT_RT补丁支持软实时。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "临界区的软件实现",
+    "front": "关闭中断和Test-and-Set等硬件方案vs纯软件方案(Peterson)的区别？",
+    "back": "软件方案(Peterson)：纯算法无硬件支持，但仅限2进程，使用忙等。硬件TSL/Swap：原子指令支持，忙等(自旋)。关中断：仅单CPU，不可在用户态。信号量/管程是OS提供的无需忙等的复杂同步方案(阻塞/唤醒)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "监控死锁的检测周期",
+    "front": "死锁检测的时机？每隔多长时间检测一次？",
+    "back": "检测时机：1.每次资源请求时检测(开销大) 2.定期检测(如每N分钟/当CPU利用率明显下降)。检测算法：化简资源分配图检查是否有环(对每个进程查看是否能完成)。开销大，一般只在有死锁症状时检测。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "连续内存分配的碎片合并",
+    "front": "动态分区如何合并空闲分区？边界标识法？",
+    "back": "回收时检查相邻分区：上邻空闲则合并(修改大小)。下邻空闲也合并(修改下一块的大小与起始地址)。边界标识法：在每个分区首尾记录分区状态(空闲/已占)，便于快速判断相邻分区状态和合并。合并可减少外部碎片数量。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "伙伴系统",
+    "front": "伙伴系统(Buddy System)的分配和回收原理？",
+    "back": "将内存按2的次幂大小划分成块。请求k分配2^ceil(log₂k)的块，不够则分割大的伙伴。释放时和空闲的伙伴合并(地址相邻且同大小即为伙伴)。分配/回收O(logn)，但有内部碎片(如请求9KB分配16KB)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "虚拟内存的地址结构",
+    "front": "32位系统下典型虚拟地址结构(页号+页内偏移)？",
+    "back": "4KB页(12位偏移) + 20位虚页号 = 2^20=1M个虚页。4MB大页: 22位偏移 + 10位虚页号 = 1024个虚页。大页减少TLB项使用但内部碎片大。64位地址选48位虚拟地址(256TB), 四级页表(PGD/PUD/PMD/PTE)每级9位。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "页面大小选择",
+    "front": "页面大小应该取多大？太小和太大的影响？",
+    "back": "太小：页表大(页面数多)→TLB覆盖范围小→缺页多；空间碎片少。太大：内部碎片大(最后一页浪费多)但页表小。典型折衷值：4KB(4096B)。大数据/图形应用可支持大页(2MB/1GB)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "请求分页的页面分配与调入策略",
+    "front": "预调页和请求调页策略的区别？",
+    "back": "请求调页(Demand Paging)：发生缺页时才调入(使用预调页只在缺页时调单页)。预调页(Prepaging)：缺页时一次调入相邻多页(利用空间局部性→一次缺页调入一组相关页)。预调可减少未来缺页但可能调入无用页。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "磁盘调度SSTF死锁",
+    "front": "SSTF算法可能导致某些请求饥饿？",
+    "back": "SSTF每次选离当前磁头最近位置→如果不断有新请求在磁头附近，那么远端的请求永远无法被服务。类似贪心算法在某些请求流中造成饥饿。SCAN/C-SCAN无饥饿但请求分布不均衡导致高的平均寻道时间。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "文件一致性检查的具体修复",
+    "front": "fsck如何修复块分配的不一致？",
+    "back": "重复块(被多个文件指向)和丢失块(有块号标记为占用但未被任何文件引用→回收为空闲)。fsck扫描整个文件系统的inode→构建块使用表两次(块位表 vs 文件寻址块)。不一致则修复(复制重复块给所有文件;将丢失块回收到空闲列表)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "文件系统的日志机制",
+    "front": "日志文件系统(Journaling)保证一致性的原理？",
+    "back": "写入更改前先在日志(磁盘专门的日志区域)记录即将执行的操作→然后提交日志(commit)→最后写入真正的文件系统(Checkpoint)。崩溃重启重放(replay)日志恢复尚未写入文件系统的操作。ext3/4的ordered模式只记元数据日志。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "设备无关性",
+    "front": "逻辑设备和物理设备的区别？LUT的作用？",
+    "back": "逻辑设备名(/dev/ttyUSB0) 对应用程序透明。OS通过设备表(LUT:逻辑设备表→驱动程序入口)将逻辑名映射到具体驱动。增加新设备只需新增驱动并加入LUT而无需改应用程序。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "I/O的数据传输单位",
+    "front": "字符设备和块设备的根本区别？",
+    "back": "字符设备(终端/键盘/鼠标)：以字符流方式传输，不支持随机寻址，一般无缓存或线性缓存。块设备(磁盘)：以块为单位传输(512B/4KB)，支持随机寻址，有块缓冲区。网络接口是第三种(结合两者，数据打包发送)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "os",
+    "knowledgePoint": "直接IO与缓冲IO",
+    "front": "open()的O_DIRECT/O_SYNC的作用？",
+    "back": "O_DIRECT：绕过页缓存直接与磁盘交互(数据对齐要求)，适用数据库自主管理缓存。O_SYNC：每次write同步写回(类似write()后fdatasync)，数据可靠但性能低。默认缓冲IO→写脏页异步写回。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "以太网帧前导码",
+    "front": "以太网帧前同步码(Preamble)和SFD字段的作用？",
+    "back": "前导码7B(10101010...交替)使接收端时钟同步。SFD(帧首定界符)1B=10101011(最后2位11指示帧开始)。前导码和SFD不作为帧长度(不计入MTU或FCS)。100M/1000M以太网继续沿用此格式(不变)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "以太网物理层标准",
+    "front": "10BASE-T,100BASE-TX,1000BASE-T的编码方式？",
+    "back": "10BASE-T:曼彻斯特编码(波特率20MBd,提供时钟)。100BASE-TX:4B/5B(80%效率)+MLT-3三层编码(125MBd)。1000BASE-T:4对线全双工+5级脉冲幅度调制PAM-5(125MBd每对线达成1000Mbps)。10GBASE-T用更先进编码。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "VLAN标签帧格式",
+    "front": "802.1Q VLAN标签插入到以太帧的哪个位置？数据变化？",
+    "back": "在源MAC地址和类型/长度字段之间插入4字节标签。TPID=0x8100(标记此帧为802.1Q)；TCI=优先级(3bit)+CFI(1bit)+VLAN ID(12bit可达4094个VLAN)。插入标签后帧总长+4B，可能超过1518B普通帧长(改允许1522B)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "ADSL和光纤接入",
+    "front": "ADSL非对称数字用户线路的频率划分和调制？",
+    "back": "用普通电话线(铜缆双绞线)但高于话音频率的频带。频率划分:0-4kHz=电话,25-138kHz=上行,138kHz-1.1MHz=下行。DMT(离散多音调)调制分割多个子信道(QAM调变)。非对称:下行>上行(符合用户下载多于上传特征)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "异构网络互连的IP隧道",
+    "front": "IP隧道(Tunneling)如何在IPv6过渡中使用？",
+    "back": "IPv6数据报封装在IPv4数据报中：IPv4头(协议=41=IPv6-over-IPv4)→IPv6头+数据。IPv6两端双栈的路由器/主机解封装还原IPv6。类似的还有6to4隧道、ISATAP、Teredo。核心思想：将新协议报文打包在现有协议上传输。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "移动IP",
+    "front": "移动IP的基本原理？家乡代理和外部代理的作用？",
+    "back": "移动节点在外部网络获得转交地址COA→向家乡代理HA注册此COA。发往移动节点原IP的数据报被HA截获→用IP-in-IP隧道封装后转发到COA→移动节点解封装接收。返回的话移动节点直接用COA作为源地址和通信对方通信(三角路由)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "可靠传输的确认机制",
+    "front": "累积确认和选择确认(SACK)的区别？",
+    "back": "累积确认：确认号指示该序号前的所有数据均已收到(若丢失后面数据也只能重复确认相同序号)。选择确认SACK(TCP option)：可告知对方已成功接收的不连续段(如收到100-200+300-400，可确认300-400)，使发送端只需重传丢失的部分段，提高效率。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "TCP的定时器",
+    "front": "TCP中四种定时器的作用？",
+    "back": "重传定时器(RTO超时重传)。坚持定时器(Persist timer，防止接收端窗口通告丢失导致死锁，定时探测窗口大小)。保活定时器(Keep-alive，检测对方是否已崩溃→超时关闭连接)。TIME_WAIT定时器(2MSL超时后，关闭连接并释资源)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "TCP连接同时打开",
+    "front": "TCP同时打开(Simultaneous Open)的过程？",
+    "back": "双方同时发送SYN(而非一方主动一方被动)。状态转换：CLOSED→SYN-SENT(发SYN)→收到对方SYN→发SYN+ACK→双方进SYN-RCVD→交换ACK→ESTABLISHED。同时打开仅需一次的SYN+ACK交换，之后各自确认。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "WebSocket",
+    "front": "WebSocket与HTTP的区别和升级过程？",
+    "back": "WebSocket是全双工持久连接协议(基于TCP)。握手：客户端发Upgrade:websocket+Sec-WebSocket-Key→服务器回应101 Switching Protocols+Sec-WebSocket-Accept。连接升级成功后双方可以随时发送数据帧(非请求-响应模式)，低开销实时通信(在线游戏/聊天/chart行情推送)。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "SSL/TLS握手",
+    "front": "TLS握手的过程(简化)？",
+    "back": "1.ClientHello(随机数+加密套件) 2.ServerHello(随机数+选中的加密套件)+证书+ServerHelloDone 3.ClientKeyExchange(预主密+公钥加密/使用RSA/DH)+ChangeCipherSpec+Finished 4.Server:ChangeCipherSpec+Finished。握手完成后双方共享会话密钥用于对称加密通信。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  },
+  {
+    "subject": "network",
+    "knowledgePoint": "QUIC协议",
+    "front": "QUIC协议基于UDP相比TCP有什么优势？",
+    "back": "QUIC(Google设计的HTTP/3基础)：1. 0-RTT/1-RTT握手(断开连接后快速恢复) 2.改进的拥塞控制(每个流独立无队头阻塞) 3.前向纠错(减少重传) 4.连接迁移(IP变化如WiFi→4G时可无缝迁移Connection ID不变)。除HTTP/3外也用于流媒体。",
+    "masteryLevel": 0,
+    "nextReviewAt": "2026-05-26",
+    "reviewCount": 0
+  }
+]
