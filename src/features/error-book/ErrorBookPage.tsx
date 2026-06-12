@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Card, Table, Tag, Button, Select, Space, Statistic, Row, Col, Modal, message, Badge } from 'antd'
+import { Table, Tag, Button, Select, Space, Row, Col, Modal, message } from 'antd'
 import { useNavigate } from 'react-router-dom'
 import { db } from '../../db'
 import { getQuestionById, getQuestionsByIds } from '../../services/question-service'
@@ -7,6 +7,8 @@ import { SUBJECT_NAMES, SUBJECT_COLORS, ERROR_TAG_OPTIONS } from '../../utils/he
 import { calculateNextReview } from '../../utils/spaced-repetition'
 import type { ErrorBookItem, Question } from '../../types'
 import dayjs from 'dayjs'
+import { motion } from 'framer-motion'
+import { StaggerContainer, StaggerItem, CountUp } from '../../components/Animations'
 
 export default function ErrorBookPage() {
   const navigate = useNavigate()
@@ -24,23 +26,13 @@ export default function ErrorBookPage() {
   async function loadErrors() {
     setLoading(true)
     let items = await db.errorBook.toArray()
-
-    if (statusFilter !== 'all') {
-      items = items.filter((e) => e.masteryStatus === statusFilter)
-    }
-
+    if (statusFilter !== 'all') items = items.filter((e) => e.masteryStatus === statusFilter)
     const questionIds = items.map((e) => e.questionId)
     const questionList = await getQuestionsByIds(questionIds)
     const questionMap = new Map(questionList.map((q) => [q.id, q]))
-    const withQuestions = items.map((e) => ({
-      ...e,
-      question: questionMap.get(e.questionId),
-    }))
-
+    const withQuestions = items.map((e) => ({ ...e, question: questionMap.get(e.questionId) }))
     const filtered = subjectFilter === 'all' ? withQuestions : withQuestions.filter((e) => e.question?.subject === subjectFilter)
-
     setErrors(filtered)
-
     const all = await db.errorBook.toArray()
     const today = dayjs().startOf('day')
     setStats({
@@ -79,11 +71,19 @@ export default function ErrorBookPage() {
     loadErrors()
   }
 
+  const statItems = [
+    { label: '总错题', value: stats.total, color: 'var(--text-primary)' },
+    { label: '未掌握', value: stats.unmastered, color: 'var(--color-error)' },
+    { label: '复习中', value: stats.reviewing, color: 'var(--color-warning)' },
+    { label: '已掌握', value: stats.mastered, color: 'var(--color-success)' },
+    { label: '今日待复习', value: stats.todayReview, color: 'var(--color-accent)' },
+  ]
+
   const columns = [
     { title: '科目', key: 'subject', width: 100, render: (_: unknown, r: { question?: Question }) => r.question ? <Tag color={SUBJECT_COLORS[r.question.subject]}>{SUBJECT_NAMES[r.question.subject]}</Tag> : '-' },
     { title: '题目', key: 'content', ellipsis: true, render: (_: unknown, r: { question?: Question }) => r.question?.content?.slice(0, 60) + '...' || '-' },
     { title: '错误次数', key: 'errorCount', width: 80, dataIndex: 'errorCount', sorter: (a: ErrorBookItem, b: ErrorBookItem) => a.errorCount - b.errorCount },
-    { title: '状态', key: 'status', width: 80, render: (_: unknown, r: ErrorBookItem) => ({ unmastered: <Tag color="red">未掌握</Tag>, reviewing: <Tag color="orange">复习中</Tag>, mastered: <Tag color="green">已掌握</Tag> }[r.masteryStatus]) },
+    { title: '状态', key: 'status', width: 80, render: (_: unknown, r: ErrorBookItem) => ({ unmastered: <Tag color="error">未掌握</Tag>, reviewing: <Tag color="warning">复习中</Tag>, mastered: <Tag color="success">已掌握</Tag> }[r.masteryStatus]) },
     { title: '下次复习', key: 'next', width: 100, render: (_: unknown, r: ErrorBookItem) => r.nextReviewAt ? dayjs(r.nextReviewAt).format('MM/DD') : '-' },
     {
       title: '操作', key: 'action', width: 200, render: (_: unknown, r: ErrorBookItem) => (
@@ -98,21 +98,41 @@ export default function ErrorBookPage() {
 
   return (
     <div>
-      <Row gutter={16} style={{ marginBottom: 16 }}>
-        <Col span={4}><Card size="small"><Statistic title="总错题" value={stats.total} /></Card></Col>
-        <Col span={4}><Card size="small"><Statistic title="未掌握" value={stats.unmastered} valueStyle={{ color: '#ff4d4f' }} /></Card></Col>
-        <Col span={4}><Card size="small"><Statistic title="复习中" value={stats.reviewing} valueStyle={{ color: '#faad14' }} /></Card></Col>
-        <Col span={4}><Card size="small"><Statistic title="已掌握" value={stats.mastered} valueStyle={{ color: '#52c41a' }} /></Card></Col>
-        <Col span={4}><Card size="small"><Statistic title="今日待复习" value={stats.todayReview} valueStyle={{ color: '#1677ff' }} /></Card></Col>
-      </Row>
+      {/* Stats */}
+      <StaggerContainer staggerDelay={0.06}>
+        <Row gutter={[12, 12]} style={{ marginBottom: 16 }}>
+          {statItems.map((s, i) => (
+            <Col xs={12} sm={8} md={4} key={i}>
+              <StaggerItem>
+                <motion.div whileHover={{ y: -2 }} style={{
+                  padding: '14px 16px',
+                  borderRadius: 'var(--radius-md)',
+                  background: 'var(--bg-raised)',
+                  border: '1px solid var(--border-light)',
+                  textAlign: 'center',
+                }}>
+                  <div style={{ fontSize: 24, fontFamily: 'var(--font-serif)', fontWeight: 700, color: s.color }}><CountUp target={s.value} duration={1.2} /></div>
+                  <div style={{ fontSize: 12, color: 'var(--text-tertiary)', marginTop: 2 }}>{s.label}</div>
+                </motion.div>
+              </StaggerItem>
+            </Col>
+          ))}
+        </Row>
+      </StaggerContainer>
 
-      <Card>
+      {/* Table */}
+      <div style={{
+        borderRadius: 'var(--radius-md)',
+        background: 'var(--bg-raised)',
+        border: '1px solid var(--border-light)',
+        padding: 16,
+      }}>
         <Space style={{ marginBottom: 16 }}>
           <Select style={{ width: 140 }} value={subjectFilter} onChange={setSubjectFilter} options={[{ value: 'all', label: '全部科目' }, ...Object.entries(SUBJECT_NAMES).map(([k, v]) => ({ value: k, label: v }))]} />
           <Select style={{ width: 120 }} value={statusFilter} onChange={setStatusFilter} options={[{ value: 'all', label: '全部状态' }, { value: 'unmastered', label: '未掌握' }, { value: 'reviewing', label: '复习中' }, { value: 'mastered', label: '已掌握' }]} />
         </Space>
         <Table dataSource={errors} columns={columns} rowKey="id" loading={loading} size="small" pagination={{ pageSize: 15 }} />
-      </Card>
+      </div>
 
       <Modal title="错因标签" open={tagModalOpen} onOk={saveTags} onCancel={() => setTagModalOpen(false)}>
         <Select mode="multiple" style={{ width: '100%' }} value={selectedTags} onChange={setSelectedTags} options={ERROR_TAG_OPTIONS.map((t) => ({ value: t, label: t }))} placeholder="选择错因标签" />

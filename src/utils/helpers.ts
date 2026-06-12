@@ -7,8 +7,8 @@ export const SUBJECT_NAMES: Record<string, string> = {
 
 export const SUBJECT_COLORS: Record<string, string> = {
   'data-structure': '#1677ff',
-  'computer-organization': '#52c41a',
-  'os': '#faad14',
+  'computer-organization': '#5B9A6F',
+  'os': '#C4956A',
   'network': '#722ed1',
 }
 
@@ -37,10 +37,10 @@ export const MEMORY_CATEGORY_LABELS: Record<string, string> = {
 }
 
 export const MEMORY_CATEGORY_COLORS: Record<string, string> = {
-  'weakness': '#ff4d4f',
-  'mastered': '#52c41a',
-  'preference': '#1677ff',
-  'error-pattern': '#faad14',
+  'weakness': '#C45D5D',
+  'mastered': '#5B9A6F',
+  'preference': '#C4956A',
+  'error-pattern': '#D4A574',
 }
 
 export const CHAPTER_NAMES: Record<string, string> = {

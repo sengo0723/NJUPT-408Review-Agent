@@ -13,17 +13,55 @@ import StudyPlanPage from './features/study-plan/StudyPlanPage'
 import StatisticsPage from './features/statistics/StatisticsPage'
 import FlashcardPage from './features/flashcard/FlashcardPage'
 import SettingsPage from './features/settings/SettingsPage'
-import { useAppStore } from './stores/useAppStore'
 
 export default function App() {
-  const { theme: themeMode } = useAppStore()
-
   return (
     <ConfigProvider
       locale={zhCN}
       theme={{
-        algorithm: themeMode === 'dark' ? theme.darkAlgorithm : theme.defaultAlgorithm,
-        token: { colorPrimary: '#1677ff', borderRadius: 6 },
+        algorithm: theme.defaultAlgorithm,
+        token: {
+          colorPrimary: '#C4956A',
+          colorLink: '#C4956A',
+          colorLinkHover: '#B38560',
+          colorSuccess: '#5B9A6F',
+          colorWarning: '#C4956A',
+          colorError: '#C45D5D',
+          colorInfo: '#6B8DAD',
+          colorBgBase: '#FAF8F5',
+          colorBgContainer: '#FFFFFF',
+          colorBgElevated: '#FFFFFF',
+          colorBorder: '#E8E4DF',
+          colorBorderSecondary: '#F0EDE8',
+          colorText: '#1A1A1A',
+          colorTextSecondary: '#6B6560',
+          colorTextTertiary: '#9C9590',
+          borderRadius: 8,
+          fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif",
+          fontSize: 14,
+        },
+        components: {
+          Menu: {
+            colorItemBgSelected: '#F5EDE4',
+            colorItemTextSelected: '#C4956A',
+            colorItemText: '#6B6560',
+            colorItemTextHover: '#1A1A1A',
+          },
+          Table: {
+            colorBgContainer: '#FFFFFF',
+            headerBg: '#F3F0EB',
+            headerColor: '#6B6560',
+            rowHoverBg: '#FBF6F0',
+            borderColor: '#F0EDE8',
+          },
+          Card: {
+            colorBgContainer: '#FFFFFF',
+            boxShadowTertiary: '0 1px 2px rgba(0,0,0,0.04)',
+          },
+          Button: {
+            defaultShadow: 'none',
+          },
+        },
       }}
     >
       <BrowserRouter>

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
-import { Card, Button, Space, Tag, Progress, Row, Col, Statistic, InputNumber, Input, Pagination, message, Modal, List, Select, Empty, Typography, Divider } from 'antd'
-import { ClockCircleOutlined, CheckCircleOutlined, CloseCircleOutlined } from '@ant-design/icons'
+import { Button, Space, Tag, Progress, Row, Col, Statistic, Input, Pagination, message, Modal, List, Select, Empty, Typography, Divider } from 'antd'
+import { ClockCircleOutlined } from '@ant-design/icons'
 import { db } from '../../db'
 import { getQuestions } from '../../services/question-service'
 import { SUBJECT_NAMES, SUBJECT_COLORS } from '../../utils/helpers'
@@ -8,6 +8,8 @@ import MarkdownRenderer from '../../components/MarkdownRenderer'
 import ReactEChartsCore from 'echarts-for-react'
 import type { Question, MockExamRecord, MockExamDetail } from '../../types'
 import dayjs from 'dayjs'
+import { motion, AnimatePresence } from 'framer-motion'
+import { StaggerContainer, StaggerItem, CountUp } from '../../components/Animations'
 
 const { Text, Title } = Typography
 
@@ -27,20 +29,12 @@ export default function MockExamPage() {
   useEffect(() => { loadRecords() }, [])
   useEffect(() => {
     if (mode === 'exam') {
-      timerRef.current = setInterval(() => {
-        setTimeLeft((t) => {
-          if (t <= 1) return 0
-          return t - 1
-        })
-      }, 1000)
+      timerRef.current = setInterval(() => setTimeLeft((t) => t <= 1 ? 0 : t - 1), 1000)
       return () => { if (timerRef.current) clearInterval(timerRef.current) }
     }
   }, [mode])
-
   useEffect(() => {
-    if (mode === 'exam' && timeLeft === 0 && handleSubmitRef.current) {
-      handleSubmitRef.current()
-    }
+    if (mode === 'exam' && timeLeft === 0 && handleSubmitRef.current) handleSubmitRef.current()
   }, [timeLeft, mode])
 
   async function loadRecords() {
@@ -50,19 +44,16 @@ export default function MockExamPage() {
 
   async function handleStartExam() {
     const subjects = ['data-structure', 'computer-organization', 'os', 'network']
-    // 408真实题量：选择题40道（每题2分=80分），综合应用题7道（约70分），总分150
-    const choiceCounts = [11, 11, 10, 8] // 各科选择题分配
-    const shortAnswerCounts = [2, 2, 2, 1] // 各科简答题分配
+    const choiceCounts = [11, 11, 10, 8]
+    const shortAnswerCounts = [2, 2, 2, 1]
     let allQ: Question[] = []
     for (let i = 0; i < subjects.length; i++) {
-      const result = await getQuestions({ subject: subjects[i] as 'data-structure', type: 'choice', page: 1, pageSize: 100 })
-      const shuffled = result.data.sort(() => Math.random() - 0.5)
-      allQ = [...allQ, ...shuffled.slice(0, choiceCounts[i])]
+      const result = await getQuestions({ subject: subjects[i] as any, type: 'choice', page: 1, pageSize: 100 })
+      allQ = [...allQ, ...result.data.sort(() => Math.random() - 0.5).slice(0, choiceCounts[i])]
     }
     for (let i = 0; i < subjects.length; i++) {
-      const result = await getQuestions({ subject: subjects[i] as 'data-structure', type: 'short-answer', page: 1, pageSize: 100 })
-      const shuffled = result.data.sort(() => Math.random() - 0.5)
-      allQ = [...allQ, ...shuffled.slice(0, shortAnswerCounts[i])]
+      const result = await getQuestions({ subject: subjects[i] as any, type: 'short-answer', page: 1, pageSize: 100 })
+      allQ = [...allQ, ...result.data.sort(() => Math.random() - 0.5).slice(0, shortAnswerCounts[i])]
     }
     if (allQ.length < 20) { message.warning('题库题目不足，请导入更多题目'); return }
     setQuestions(allQ)
@@ -86,12 +77,7 @@ export default function MockExamPage() {
     const timeSpent = Math.round((Date.now() - examStartTime) / 1000)
     const details: MockExamDetail[] = questions.map((q) => {
       const isCorrect = (answers[q.id!] || '').trim().toUpperCase() === q.answer.trim().toUpperCase()
-      return {
-        questionId: q.id!,
-        userAnswer: answers[q.id!] || '',
-        isCorrect,
-        score: getQuestionScore(q, isCorrect),
-      }
+      return { questionId: q.id!, userAnswer: answers[q.id!] || '', isCorrect, score: getQuestionScore(q, isCorrect) }
     })
     const totalScore = details.reduce((s, d) => s + d.score, 0)
     await db.mockExamRecords.add({ date: new Date(), totalScore, timeSpent, details })
@@ -100,35 +86,56 @@ export default function MockExamPage() {
   }
 
   handleSubmitRef.current = handleSubmit
-
   const formatTime = (s: number) => `${Math.floor(s / 3600)}:${Math.floor((s % 3600) / 60).toString().padStart(2, '0')}:${(s % 60).toString().padStart(2, '0')}`
 
   if (mode === 'exam' && questions.length > 0) {
     const q = questions[currentIdx]
     return (
       <div style={{ maxWidth: 900, margin: '0 auto' }}>
-        <Card>
+        <div style={{ borderRadius: 'var(--radius-md)', background: 'var(--bg-raised)', border: '1px solid var(--border-light)', padding: 24 }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 16 }}>
             <Space><Tag color={SUBJECT_COLORS[q.subject]}>{SUBJECT_NAMES[q.subject]}</Tag><Text>第{currentIdx + 1}/{questions.length}题</Text></Space>
             <Space><ClockCircleOutlined /><Text type={timeLeft < 600 ? 'danger' : undefined} strong>{formatTime(timeLeft)}</Text></Space>
           </div>
-          <Progress percent={((currentIdx + 1) / questions.length) * 100} showInfo={false} size="small" />
-          <div style={{ margin: '20px 0' }}><MarkdownRenderer content={q.content} /></div>
+          <Progress percent={((currentIdx + 1) / questions.length) * 100} showInfo={false} size="small" strokeColor="var(--color-accent)" />
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={q.id}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.25 }}
+              style={{ margin: '20px 0' }}
+            >
+              <MarkdownRenderer content={q.content} />
+            </motion.div>
+          </AnimatePresence>
           {q.options ? (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-              {q.options.map((opt, idx) => {
-                const letter = String.fromCharCode(65 + idx)
-                return (
-                  <div key={letter} onClick={() => setAnswers({ ...answers, [q.id!]: letter })} style={{ padding: '10px 16px', borderRadius: 8, cursor: 'pointer', border: `1px solid ${answers[q.id!] === letter ? '#1677ff' : '#d9d9d9'}`, background: answers[q.id!] === letter ? '#e6f4ff' : '#fff' }}>
-                    {letter}. {opt}
-                  </div>
-                )
-              })}
-            </div>
+            <StaggerContainer staggerDelay={0.04}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                {q.options.map((opt, idx) => {
+                  const letter = String.fromCharCode(65 + idx)
+                  return (
+                    <StaggerItem key={letter}>
+                      <motion.div
+                        whileHover={{ scale: 1.01, x: 2 }}
+                        whileTap={{ scale: 0.99 }}
+                        onClick={() => setAnswers({ ...answers, [q.id!]: letter })} style={{
+                        padding: '10px 16px', borderRadius: 'var(--radius-sm)', cursor: 'pointer',
+                        border: `1px solid ${answers[q.id!] === letter ? 'var(--color-accent)' : 'var(--border-default)'}`,
+                        background: answers[q.id!] === letter ? 'var(--color-accent-light)' : 'var(--bg-sunken)',
+                      }}>
+                        {letter}. {opt}
+                      </motion.div>
+                    </StaggerItem>
+                  )
+                })}
+              </div>
+            </StaggerContainer>
           ) : q.type === 'short-answer' ? (
             <Input.TextArea value={answers[q.id!] || ''} onChange={(e) => setAnswers({ ...answers, [q.id!]: e.target.value })} rows={4} placeholder="输入你的答案..." />
           ) : q.type === 'code' ? (
-            <Input.TextArea value={answers[q.id!] || ''} onChange={(e) => setAnswers({ ...answers, [q.id!]: e.target.value })} rows={10} placeholder="在此编写代码..." style={{ fontFamily: 'monospace' }} />
+            <Input.TextArea value={answers[q.id!] || ''} onChange={(e) => setAnswers({ ...answers, [q.id!]: e.target.value })} rows={10} placeholder="在此编写代码..." style={{ fontFamily: 'var(--font-mono)' }} />
           ) : null}
           <Divider />
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -140,10 +147,16 @@ export default function MockExamPage() {
           </div>
           <div style={{ marginTop: 16, display: 'flex', flexWrap: 'wrap', gap: 4 }}>
             {questions.map((qq, idx) => (
-              <div key={qq.id} onClick={() => setCurrentIdx(idx)} style={{ width: 28, height: 28, display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 4, cursor: 'pointer', fontSize: 12, background: idx === currentIdx ? '#1677ff' : answers[qq.id!] ? '#52c41a' : '#f0f0f0', color: idx === currentIdx || answers[qq.id!] ? 'white' : 'black' }}>{idx + 1}</div>
+              <div key={qq.id} onClick={() => setCurrentIdx(idx)} style={{
+                width: 28, height: 28, display: 'flex', alignItems: 'center', justifyContent: 'center',
+                borderRadius: 6, cursor: 'pointer', fontSize: 12,
+                background: idx === currentIdx ? 'var(--color-accent)' : answers[qq.id!] ? 'var(--color-success)' : 'var(--bg-sunken)',
+                color: idx === currentIdx || answers[qq.id!] ? 'white' : 'var(--text-secondary)',
+                transition: 'all var(--transition-fast)',
+              }}>{idx + 1}</div>
             ))}
           </div>
-        </Card>
+        </div>
       </div>
     )
   }
@@ -152,14 +165,20 @@ export default function MockExamPage() {
     const lastRecord = records[0]
     const correct = lastRecord?.details.filter((d) => d.isCorrect).length || 0
     return (
-      <Card title="考试结果">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.98 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+        style={{ borderRadius: 'var(--radius-md)', background: 'var(--bg-raised)', border: '1px solid var(--border-light)', padding: 24 }}
+      >
+        <Title level={4} style={{ fontFamily: 'var(--font-serif)', marginBottom: 20 }}>考试结果</Title>
         <Row gutter={16}>
-          <Col span={8}><Statistic title="总分" value={lastRecord?.totalScore || 0} suffix="/150" /></Col>
-          <Col span={8}><Statistic title="正确率" value={lastRecord ? Math.round((correct / lastRecord.details.length) * 100) : 0} suffix="%" /></Col>
+          <Col span={8}><Statistic title="总分" value={lastRecord?.totalScore || 0} suffix="/150" valueStyle={{ fontFamily: 'var(--font-serif)', fontWeight: 700 }} /></Col>
+          <Col span={8}><Statistic title="正确率" value={lastRecord ? Math.round((correct / lastRecord.details.length) * 100) : 0} suffix="%" valueStyle={{ fontFamily: 'var(--font-serif)', fontWeight: 700 }} /></Col>
           <Col span={8}><Statistic title="用时" value={formatTime(lastRecord?.timeSpent || 0)} /></Col>
         </Row>
         <Divider />
-        <h3>题目回顾</h3>
+        <h3 style={{ fontFamily: 'var(--font-serif)', marginBottom: 16 }}>题目回顾</h3>
         {lastRecord && (
           <div>
             <Row gutter={[8, 8]}>
@@ -168,26 +187,22 @@ export default function MockExamPage() {
                 if (idx < reviewPage * REVIEW_PAGE_SIZE || idx >= (reviewPage + 1) * REVIEW_PAGE_SIZE) return null
                 return (
                   <Col span={24} key={q.id}>
-                    <Card size="small" style={{ borderLeft: `3px solid ${d?.isCorrect ? '#52c41a' : '#ff4d4f'}` }}>
+                    <div style={{
+                      padding: 16, borderRadius: 'var(--radius-md)',
+                      background: 'var(--bg-raised)',
+                      border: `1px solid var(--border-light)`,
+                      borderLeft: `3px solid ${d?.isCorrect ? 'var(--color-success)' : 'var(--color-error)'}`,
+                    }}>
                       <Space direction="vertical" style={{ width: '100%' }}>
                         <div>
                           <Tag color={d?.isCorrect ? 'success' : 'error'}>{d?.isCorrect ? '正确' : '错误'}</Tag>
                           <Text>第{idx + 1}题 ({q.type === 'choice' ? '选择' : q.type === 'short-answer' ? '简答' : '代码'})</Text>
                         </div>
                         <Text>{q.content.slice(0, 100)}...</Text>
-                        <div>
-                          <Text type="secondary">你的答案：</Text>
-                          <Text type={d?.isCorrect ? 'success' : 'danger'}>{d?.userAnswer || '未作答'}</Text>
-                        </div>
-                        <div>
-                          <Text type="secondary">正确答案：</Text>
-                          <Text type="success">{q.answer}</Text>
-                        </div>
-                        {q.explanation && (
-                          <Text type="secondary" style={{ fontSize: 12 }}>解析：{q.explanation.slice(0, 100)}...</Text>
-                        )}
+                        <div><Text type="secondary">你的答案：</Text><Text type={d?.isCorrect ? 'success' : 'danger'}>{d?.userAnswer || '未作答'}</Text></div>
+                        <div><Text type="secondary">正确答案：</Text><Text type="success">{q.answer}</Text></div>
                       </Space>
-                    </Card>
+                    </div>
                   </Col>
                 )
               })}
@@ -198,34 +213,36 @@ export default function MockExamPage() {
           </div>
         )}
         <Button type="primary" onClick={() => setMode('list')} style={{ marginTop: 16 }}>返回列表</Button>
-      </Card>
+      </motion.div>
     )
   }
 
   return (
     <div>
-      <Card style={{ marginBottom: 16 }}>
-        <Title level={4}>模拟考试</Title>
-        <p>严格按照408考试规格：180分钟、40道选择题、150分制。</p>
+      <div style={{ borderRadius: 'var(--radius-md)', background: 'var(--bg-raised)', border: '1px solid var(--border-light)', padding: 24, marginBottom: 16 }}>
+        <Title level={4} style={{ fontFamily: 'var(--font-serif)', marginBottom: 8 }}>模拟考试</Title>
+        <p style={{ color: 'var(--text-secondary)', marginBottom: 16 }}>严格按照408考试规格：180分钟、40道选择题、150分制。</p>
         <Button type="primary" size="large" onClick={handleStartExam}>开始全真模考</Button>
-      </Card>
+      </div>
 
-      <Card title="历次模考记录">
-        {records.length === 0 ? <Empty description="暂无模考记录" /> : (
+      <div style={{ borderRadius: 'var(--radius-md)', background: 'var(--bg-raised)', border: '1px solid var(--border-light)', padding: 24 }}>
+        <span style={{ fontFamily: 'var(--font-serif)', fontWeight: 600, fontSize: 15, color: 'var(--text-primary)', marginBottom: 16, display: 'block' }}>历次模考记录</span>
+        {records.length === 0 ? <Empty description="暂无模考记录" image={Empty.PRESENTED_IMAGE_SIMPLE} /> : (
           <>
             <div style={{ height: 300, marginBottom: 24 }}>
               <ReactEChartsCore option={{
-                xAxis: { type: 'category', data: records.map((r) => dayjs(r.date).format('MM/DD')).reverse() },
-                yAxis: { type: 'value', max: 150 },
-                series: [{ type: 'line', data: records.map((r) => r.totalScore).reverse(), smooth: true, areaStyle: {} }],
-                tooltip: { trigger: 'axis' },
+                grid: { top: 20, right: 20, bottom: 30, left: 40 },
+                xAxis: { type: 'category', data: records.map((r) => dayjs(r.date).format('MM/DD')).reverse(), axisLine: { lineStyle: { color: 'var(--border-default)' } }, axisTick: { show: false }, axisLabel: { color: 'var(--text-tertiary)' } },
+                yAxis: { type: 'value', max: 150, axisLine: { show: false }, axisTick: { show: false }, splitLine: { lineStyle: { color: 'var(--border-light)' } }, axisLabel: { color: 'var(--text-tertiary)' } },
+                series: [{ type: 'line', data: records.map((r) => r.totalScore).reverse(), smooth: true, areaStyle: { color: { type: 'linear', x: 0, y: 0, x2: 0, y2: 1, colorStops: [{ offset: 0, color: 'rgba(196, 149, 106, 0.3)' }, { offset: 1, color: 'rgba(196, 149, 106, 0.02)' }] } }, lineStyle: { color: 'var(--color-accent)' }, itemStyle: { color: 'var(--color-accent)' } }],
+                tooltip: { trigger: 'axis', backgroundColor: 'var(--bg-raised)', borderColor: 'var(--border-default)', textStyle: { color: 'var(--text-primary)' } },
               }} style={{ height: '100%' }} />
             </div>
             <List dataSource={records} renderItem={(r) => (
-              <List.Item>
+              <List.Item style={{ padding: '10px 0' }}>
                 <Space>
                   <Text>{dayjs(r.date).format('YYYY-MM-DD HH:mm')}</Text>
-                  <Tag color={r.totalScore >= 100 ? 'green' : r.totalScore >= 70 ? 'orange' : 'red'}>{r.totalScore}分</Tag>
+                  <Tag color={r.totalScore >= 100 ? 'success' : r.totalScore >= 70 ? 'warning' : 'error'}>{r.totalScore}分</Tag>
                   <Text type="secondary">用时{formatTime(r.timeSpent)}</Text>
                   <Text type="secondary">正确{r.details.filter((d) => d.isCorrect).length}/{r.details.length}</Text>
                 </Space>
@@ -233,7 +250,7 @@ export default function MockExamPage() {
             )} />
           </>
         )}
-      </Card>
+      </div>
     </div>
   )
 }
